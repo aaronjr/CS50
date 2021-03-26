@@ -13,8 +13,9 @@ while (startSize<=9);
 
     // TODO: Prompt for end size
 int endSize;
+do
 {
-    endSize=get_int("Choose a final population size: ");
+    endSize = get_int("Choose a final population size: ");
 }
 while (endSize < startSize)
 ;
