@@ -4,7 +4,7 @@
 int main(void)
 {
     // TODO: Prompt for start size
-int startSize;
+int startSize = (float)startSize;
 do
 {
     startSize = get_int("Choose starting populaiton, bigger than 9: ");
@@ -12,7 +12,7 @@ do
 while (startSize<9);
 
     // TODO: Prompt for end size
-int endSize;
+int endSize = (float)endSize;
 do
 {
     endSize = get_int("Choose a final population size: ");
