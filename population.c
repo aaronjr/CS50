@@ -32,7 +32,7 @@ while (startSize<endSize)
 
  if (startSize == endSize)
     {
-        printf("Years: 0");check50 cs50/labs/2021/x/population
+        printf("Years: 0");
     }
  else
     {
