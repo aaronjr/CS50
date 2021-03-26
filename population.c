@@ -22,7 +22,7 @@ while (endSize <= startSize)
     int i;
     int years = 0;
  for(i = startSize; i<=endSize; i++){
-     i = i + (i/3) - (i/4);
+     i = i + ((float)i/3) - ((float)i/4);
      years++;
 
  }
