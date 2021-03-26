@@ -9,7 +9,7 @@ do
 {
     startSize = get_int("Choose starting populaiton, bigger than 9: ");
 }
-while (startSize<9);
+while (startSize<=9);
 
     // TODO: Prompt for end size
 int endSize;
