@@ -22,6 +22,12 @@ while (endSize < startSize)
     // TODO: Calculate number of years until we reach threshold
     int i;
     int years = 0;
+    
+     if (startSize == endSize)
+    {
+        printf("Years: 0");
+    }
+    
  for(i = startSize; i<=endSize; i++){
      i = i + ((float)i/3) - ((float)i/4);
      years++;
