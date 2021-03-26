@@ -30,13 +30,9 @@ while (startSize<endSize)
      years++;
     }
 
- if (startSize == endSize)
-    {
-        printf("Years: 0");
-    }
- else
+printf("Years: %i\n ", years);
     {
     // TODO: Print number of years
-    printf("Years: %i\n ", years);
-    }
+    
+    
 }
