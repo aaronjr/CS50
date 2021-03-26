@@ -3,7 +3,7 @@
 
 int main (void)
 {
-        string name = get_string("What ischeck50 cs50/problems/2021/x/hello your name?\n");
+        string name = get_string("What is your name?\n");
         printf("hello, %s\n", name);
 }
 
