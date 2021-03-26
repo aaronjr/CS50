@@ -16,7 +16,7 @@ int endSize;
 {
     endSize=get_int("Choose a final population size: ");
 }
-while (endSize <= startSize)
+while (endSize < startSize)
 ;
     // TODO: Calculate number of years until we reach threshold
     int i;
