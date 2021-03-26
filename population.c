@@ -4,28 +4,21 @@
 int main(void)
 {
     // TODO: Prompt for start size
-int startsize;
-    
+int startSize;
 do
 {
-    startsize = get_int("Choose starting populaiton, bigger than 9: ");
+    startSize = get_int("Choose starting populaiton, bigger than 9: ");
 }
-while (startsize<9);
-
-int startSize = (float)startsize;
+while (startSize<9);
 
     // TODO: Prompt for end size
-int endsize;
-
-
+int endSize;
 do
 {
-    endsize = get_int("Choose a final population size: ");
+    endSize = get_int("Choose a final population size: ");
 }
-while (endsize < startSize)
+while (endSize < startSize)
 ;
-int endSize = (float)endsize;
-
     // TODO: Calculate number of years until we reach threshold
     int i;
     int years = 0;
@@ -36,7 +29,7 @@ int endSize = (float)endsize;
     }
     
  for(i = startSize; i<=endSize; i++){
-     i = i + (i/3) - (i/4);
+     i = i + (float)(i/3) - (float)(i/4);
      years++;
 
  }
