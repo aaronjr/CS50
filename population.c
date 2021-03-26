@@ -8,7 +8,7 @@ int main(void)
 int startSize;
 do
 {
-    startSize = get_int("Choose starting populaiton, bigger than 9: ");
+    startSize = get_int("Choose starting populaiton, 9 or bigger: ");
 }
 while (startSize<9);
 
@@ -20,22 +20,23 @@ do
 }
 while (endSize < startSize)
 ;
-    // TODO: Calculate number of years until we reach threshold
-    int i;
-    int years = 0;
+// TODO: Calculate number of years until we reach threshold
+int years = 0;
 
 
-     if (startSize == endSize)
+while (startSize<endSize)
     {
-        printf("Years: 0");
+     startSize = startSize + (startSize / 3) - (startSize / 4);
+     years++;
     }
 
- for(i = startSize; i<=endSize; i++){
-     years++;
-     i = i + (i/3) - (i/4);
-
-
- }
+ if (startSize == endSize)
+    {
+        printf("Years: 0");check50 cs50/labs/2021/x/population
+    }
+ else
+    {
     // TODO: Print number of years
     printf("Years: %i\n ", years);
+    }
 }
