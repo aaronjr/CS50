@@ -29,7 +29,7 @@ while (endSize < startSize)
     }
     
  for(i = startSize; i<=endSize; i++){
-     i = i + ((float)i/3) - ((float)i/4);
+     i = i + (i/3) - (i/4);
      years++;
 
  }
