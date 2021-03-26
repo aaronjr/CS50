@@ -1,6 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <math.h>
+
 
 int main(void)
 {
@@ -18,11 +18,11 @@ do
 {
     endSize = get_int("Choose a final population size: ");
 }
-while (endSize < startSize)
-;
-// TODO: Calculate number of years until we reach threshold
-int years = 0;
+while (endSize < startSize);
 
+// TODO: Calculate number of years until we reach threshold
+
+int years = 0;
 
 while (startSize<endSize)
     {
@@ -30,9 +30,9 @@ while (startSize<endSize)
      years++;
     }
 
-printf("Years: %i\n ", years);
-    {
+    
     // TODO: Print number of years
     
+printf("Years: %i\n ", years);
     
 }
