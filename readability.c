@@ -25,9 +25,9 @@ float sentence = sentences(input);
 //calculation for coleman liau
 float l = (letter / word) * 100;
 float s = (sentence / word) * 100;
-float index = 0.0588 * l - 0.296 * s - 15.8;
+int index = 0.0588 * l - 0.296 * s - 15.8;
 
-printf("Grade %f\n", round(index));
+printf("Grade %i\n", index);
 
 }
 
