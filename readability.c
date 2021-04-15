@@ -10,7 +10,7 @@ float words (string input);
 float sentences (string input);
 
 int main(void){
- 
+
 //get input
 string input = get_string("Text: ");
 
@@ -19,7 +19,7 @@ float letter = letters(input);
 float word = words(input);
 float sentence = sentences(input);
 
-//printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
+printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
 
 //calculation for coleman liau
 float l = (letter / word) * 100;
@@ -40,19 +40,19 @@ float letters (string input){
 }
 
 float words (string input){
-    int word = 0;  
+    int word = 0;
     for (int i = 0, n=strlen(input); i < n; i++){
-         if (input[i] == 32 || input[i] == 46 || input[i] == 33 || input[i] == 63){
+         if (input[i] == 32){
             word++;}
     }
-    return word; 
+    return word;
 }
 
-float sentences (string input){    
+float sentences (string input){
     int sentence = 0;
     for (int i = 0, n=strlen(input); i < n; i++){
          if ( input[i] == 46 || input[i] == 33 || input[i] == 63 ){
-            sentence ++;}  
+            sentence ++;}
     }
     return sentence;
     }
