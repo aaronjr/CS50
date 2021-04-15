@@ -66,4 +66,4 @@ float sentences (string input){
     }
     return sentence;
     }
-    
+
