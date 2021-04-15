@@ -45,7 +45,7 @@ float words (string input){
          if (input[i] == 32){
             word++;}
     }
-    return word+=1;
+    return word;
 }
 
 float sentences (string input){
