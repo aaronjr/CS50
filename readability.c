@@ -19,7 +19,7 @@ float letter = letters(input);
 float word = words(input);
 float sentence = sentences(input);
 
-printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
+//printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
 
 //calculation for coleman liau
 float l = (letter / word) * 100;
