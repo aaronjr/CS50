@@ -31,12 +31,10 @@ string input = get_string("Text: ");
     int index = round(indx);
 
 //print grade level
-    do{printf("Before Grade 1");}
-    while (index < 1);
-    do {printf("Grade %i", index);}
-    while (index >= 1 && index <16);
-    do {printf("Grade 16+");}
-    while (index >= 16);
+    
+    if (index < 1){printf("Before Grade 1\n");}
+    else if (index >= 1 && index <16){printf("Grade %i\n", index);}
+    else if (index >= 16){printf("Grade 16+\n");}
 
 
 }
