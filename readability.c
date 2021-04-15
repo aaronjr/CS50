@@ -9,6 +9,7 @@ float letters (string input);
 float words (string input);
 float sentences (string input);
 
+
 int main(void){
 
 //get input
@@ -28,7 +29,14 @@ float s = (sentence / word) * 100;
 float indx = 0.0588 * l - 0.296 * s - 15.8;
 int index = round(indx);
 
-printf("Grade %i\n", index);
+
+do{printf("Before Grade 1");}
+while (index < 1);
+do {printf("Grade %i", index);}
+while (index >= 1 && index <16);
+do {printf("Grade 16+");}
+while (index >= 16);
+
 
 }
 
@@ -58,3 +66,4 @@ float sentences (string input){
     }
     return sentence;
     }
+    
