@@ -16,17 +16,18 @@ string input = get_string("Text: ");
 
 //calculate each type
 float letter = letters(input);
-float word = words(input);
+float wordz = words(input);
+float word = wordz + 1;
 float sentence = sentences(input);
 
-//printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
+printf("Letters: %f\nWords: %f\nSentences: %f\n", letter, word, sentence);
 
 //calculation for coleman liau
 float l = (letter / word) * 100;
 float s = (sentence / word) * 100;
-int index = 0.0588 * l - 0.296 * s - 15.8;
+float index = 0.0588 * l - 0.296 * s - 15.8;
 
-printf("Grade %i\n", index);
+printf("Grade %f\n", round(index));
 
 }
 
