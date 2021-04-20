@@ -2,16 +2,35 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+
 
 int main(int argc, string argv[])
 {
    if (argc != 2){printf("Insert valid key\n"); return 1;}
    for(int i = 0, n = strlen(argv[1]); i < n; i++)
    {
-       if (isdigit(argv[1][i])){return 0; printf("is digit\n");}
-       else {return 1; printf("Usage: ./caesar key\n");};
+       if (isdigit(argv[1][i])){}
+       else {printf("Usage: ./caesar key\n"); return 1; };
    };
    
- string plaintext = get_string("plaintext: ");
- // output ciphertext 
+   int key = atoi(argv[1]);
+   //printf("%i\n", key);
+   
+    // get plain text
+    string plain = get_string("plaintext: ");
+    printf("Ciphertext: ");
+    // convert to  ciphertext 
+    for (int i = 0, n = strlen(plain); i < n; i++){
+      if (plain[i] >= 'a' && plain[i] <= 'z'){
+         char c = plain[i] + 1;
+      printf("%c", c);}
+      else if (plain[i] >= 'A' && plain[i] <= 'Z'){
+         char c = plain[i] + 1;
+      printf("%c", c);}
+      if(i == strlen(plain) - 1){printf("\n");}
+    }
+    
 }
+
