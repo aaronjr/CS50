@@ -21,18 +21,19 @@ int main(int argc, string argv[])
     // get plain text
     string plain = get_string("plaintext: ");
     printf("Ciphertext: ");
+    
     // convert to  ciphertext
     for (int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
-          if (plain[i]>122){
-              char c = plain[i] + key;
-                printf("%c", c - 26);}
-         else {char c = plain[i] + key;
-               printf("%c", c);} }
+         char c = plain[i] + key;
+      printf("%c", c);}
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
          char c = plain[i] + key;
       printf("%c", c);}
-      if(i == strlen(plain) - 1){printf("\n");}
+      else if(plain[i] != (plain[i] >= 'a' && plain[i] <= 'z') || plain[i] != (plain[i] >= 'A' && plain[i] <= 'Z') ){
+          printf("%c", plain[i]);
+      }
+      else if(i == strlen(plain) - 1){printf("\n");}
     }
 
 }
