@@ -25,10 +25,10 @@ int main(int argc, string argv[])
     // convert to  ciphertext
     for (int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
-         char c = (plain[i] + key) % 122;
+         char c = (plain[i] + key) % 26;
       printf("%c", c);}
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-         char c = (plain[i] + key) % 122;
+         char c = (plain[i] + key) % 26;
       printf("%c", c);}
       else {printf("%c", plain[i]);}
      }
