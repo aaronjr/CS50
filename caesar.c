@@ -14,14 +14,14 @@ int main(int argc, string argv[])
        if (isdigit(argv[1][i])){}
        else {printf("Usage: ./caesar key\n"); return 1; };
    };
-   
+
    int key = atoi(argv[1]);
    //printf("%i\n", key);
-   
+
     // get plain text
     string plain = get_string("plaintext: ");
     printf("Ciphertext: ");
-    // convert to  ciphertext 
+    // convert to  ciphertext
     for (int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
          char c = plain[i] + key;
@@ -29,8 +29,10 @@ int main(int argc, string argv[])
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
          char c = plain[i] + key;
       printf("%c", c);}
+      else if( plain[i] <= 'A' || plain[i] >= 'Z'|| plain[i] <= 'a' || plain[i] >= 'z'){
+          printf("%c", plain[i]);}
       if(i == strlen(plain) - 1){printf("\n");}
     }
-    
+
 }
 
