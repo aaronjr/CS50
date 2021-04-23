@@ -29,8 +29,6 @@ int main(int argc, string argv[])
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
          char c = plain[i] + key;
       printf("%c", c);}
-      else if( plain[i] <= 'A' || plain[i] >= 'Z'|| plain[i] <= 'a' || plain[i] >= 'z'){
-          printf("%i", plain[i]);}
       if(i == strlen(plain) - 1){printf("\n");}
     }
 
