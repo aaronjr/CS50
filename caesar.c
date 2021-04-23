@@ -30,7 +30,7 @@ int main(int argc, string argv[])
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
          char c = (plain[i] + key) % 122;
       printf("%c", c);}
-      else {printf("%i", plain[i]);}
+      else {printf("%c", plain[i]);}
      }
     
     printf("\n");
