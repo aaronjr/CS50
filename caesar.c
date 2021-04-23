@@ -24,7 +24,7 @@ int main(int argc, string argv[])
     
     // convert to  ciphertext
     for (int i = 0, n = strlen(plain); i < n; i++){
-        char c = (plain[i] + key) % 26;
+        char c = (plain[i] + key) % 122;
         printf("%c", c);
         }
 
