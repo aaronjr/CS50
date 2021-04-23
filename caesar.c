@@ -30,7 +30,7 @@ int main(int argc, string argv[])
          char c = plain[i] + key;
       printf("%c", c);}
       else if( plain[i] <= 'A' || plain[i] >= 'Z'|| plain[i] <= 'a' || plain[i] >= 'z'){
-          printf("%c", plain[i]);}
+          printf("%i", plain[i]);}
       if(i == strlen(plain) - 1){printf("\n");}
     }
 
