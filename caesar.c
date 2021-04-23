@@ -20,7 +20,7 @@ int main(int argc, string argv[])
 
     // get plain text
     string plain = get_string("plaintext: ");
-    printf("Ciphertext: ");
+    printf("ciphertext: ");
     
     // convert to  ciphertext
     for (int i = 0, n = strlen(plain); i < n; i++){
