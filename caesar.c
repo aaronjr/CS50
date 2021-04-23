@@ -27,5 +27,6 @@ int main(int argc, string argv[])
         char c = (plain[i] + key) % 122;
         printf("%c", c);
         }
-
+    
+    printf("\n");
 }
