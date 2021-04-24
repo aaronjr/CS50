@@ -36,7 +36,7 @@ int main(int argc, string argv[])
          char c = (((plain[i] - 'a') + key[plain[i] - 'a']) % 26) + 'a';
       printf("%c", c);}
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-         char c = (((plain[i] - 'A') + key[plain[i] - 'a']) % 26) + 'A';
+         char c = (((plain[i] - 'A') + key[plain[i] - 'A']) % 26) + 'A';
       printf("%c", c);}
       else {printf("%c", plain[i]);}
      }
