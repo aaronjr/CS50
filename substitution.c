@@ -4,10 +4,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-string tocipher(string plain);
+
 
 int main(int argc, string argv[])
 {
+    char key[26];
     // check 2 aruguments
    if (argc != 2){printf("Insert valid key\n"); return 1;}
    // check for 26 characters
@@ -15,11 +16,12 @@ int main(int argc, string argv[])
    // check for alphabeetical characters
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
     if ( (argv[1][i] >= 'a' && argv[1][i] <= 'z') || (argv[1][i] >= 'A' && argv[1][i] <= 'Z')){
+          strncat(key, &argv[1][i], 1);
        }
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
    //string to key
-   string key = tocipher(argv[1]);
+   
    
    //test for key
    printf("The key is %s\n", key);
@@ -47,17 +49,5 @@ int main(int argc, string argv[])
 }
 
 
-//  ISSUE HERE -  need to store argv into an array called key
-string tocipher(string plain){
-   string keys = " ";
-   for(int i = 0, n = strlen(plain); i < n; i++){
-    if ( (plain[i] >= 'a' && plain[i] <= 'z') || (plain[i] >= 'A' && plain[i] <= 'Z')){
-       strncat(keys, &plain[i], 1);
-       }
-       else{strncat(keys, &plain[i], 1);
-      }
-   }
-    return keys;
-}
-
- //(((c - a) + key[c - 'a']) % 26 ) + 'a'
+ 
+ 
