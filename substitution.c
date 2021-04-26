@@ -14,9 +14,15 @@ int main(int argc, string argv[])
    if(strlen(argv[1])!=26){printf("Insert 26 characters\n"); return 1;}
    // check for alphabeetical characters
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
-    if ( (argv[1][i] >= 'a' && argv[1][i] <= 'z') || (argv[1][i] >= 'A' && argv[1][i] <= 'Z')){
-         strncat(key, &argv[1][i], 1);
+    if (argv[1][i] >= 'a' && argv[1][i] <= 'z'){
+         char q = argv[1][i] - 'a';
+         strncat(key, &q, 1);
        }
+    else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z'){
+        char w = argv[1][i] - 'A';
+         strncat(key, &w, 1);
+      }
+    
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
 
