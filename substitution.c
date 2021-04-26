@@ -19,7 +19,7 @@ int main(int argc, string argv[])
          strncat(key, &argv[1][i] - 'a', 1);
        }
     else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z'){
-         char q = (argv[1][i] + 'a') - 'A';
+         char q = (argv[1][i] + 32) - 'A';
          strncat(key, &q , 1);
       }
     
