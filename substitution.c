@@ -8,6 +8,7 @@ int main(int argc, string argv[])
 {
 
    char key[26] = "";
+   
     // check 2 aruguments
    if (argc != 2){printf("Insert valid key\n"); return 1;}
    // check for 26 characters
@@ -15,12 +16,11 @@ int main(int argc, string argv[])
    // check for alphabeetical characters
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
     if (argv[1][i] >= 'a' && argv[1][i] <= 'z'){
-         char q = argv[1][i] - 'a';
-         strncat(key, &q, 1);
+         strncat(key, &argv[1][i] - 'a', 1);
        }
     else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z'){
-        char w = argv[1][i] - 'A';
-         strncat(key, &w, 1);
+         char q = (argv[1][i] + 'a') - 'A';
+         strncat(key, &q , 1);
       }
     
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
