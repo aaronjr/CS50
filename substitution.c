@@ -39,7 +39,7 @@ int main(int argc, string argv[])
         printf("%c", (plain[i] - 'a' + (key[i] - 'a') % 26) + 'a');
         }
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-        printf("%c", (plain[i] - 'A' + (key[i] - 'A') % 26) + 'A');
+        printf("%c", (plain[i] - 'A' + (key[i] - 'a') % 26) + 'A');
         }
       else {printf("%c", plain[i]);}
     }
