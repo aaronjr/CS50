@@ -6,6 +6,7 @@
 
 int main(int argc, string argv[])
 {
+
    char key[26] = "";
     // check 2 aruguments
    if (argc != 2){printf("Insert valid key\n"); return 1;}
@@ -18,7 +19,7 @@ int main(int argc, string argv[])
        }
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
-   
+
    //test for key
    printf("The key is %s\n", key);
 
@@ -26,16 +27,16 @@ int main(int argc, string argv[])
     string plain = get_string("plaintext: ");
     printf("ciphertext: ");
 
-    // to cipher
+    // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
     for (int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
-         char c = (((plain[i] - 'a') + key[plain[i] - 'a']) % 26) + 'a';
-      printf("%c", c);}
+        printf("%c", (plain[i] - 'a' + (key[i] - 'a') % 26) + 'a');
+        }
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-         char c = (((plain[i] - 'A') + key[plain[i] - 'A']) % 26) + 'A';
-      printf("%c", c);}
+        printf("%c", (plain[i] - 'A' + (key[i] - 'A') % 26) + 'A');
+        }
       else {printf("%c", plain[i]);}
-     }
+    }
 
     //print new line
     printf("\n");
@@ -44,5 +45,4 @@ int main(int argc, string argv[])
 }
 
 
- 
- 
+
