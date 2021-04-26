@@ -37,10 +37,10 @@ int main(int argc, string argv[])
     for (int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
         //printf("%c", ((plain[i] - 'a') + (key[plain[i] - 'a']) % 26) + 'a');
-        printf("%c", (plain[i] - 'a') + (key[plain[i] - 'a'] - 'a') % 26 + 'a' );
+        printf("%c", ((plain[i] - 'a') + (key[plain[i] - 'a'] - 'a')) % 26 + 'a' );
         }
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-        printf("%c", (plain[i] - 'A') + (key[plain[i] - 'A'] - 'a') % 26 + 'A' );
+        printf("%c", ((plain[i] - 'A') + (key[plain[i] - 'A'] - 'a')) % 26 + 'A' );
         }
       else {printf("%c", plain[i]);}
     }
