@@ -34,16 +34,14 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
 
     // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
-    for (int i = 0, n = strlen(plain); i < n; i++){
+    for ( int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
-        printf("%c", ((plain[i] - 'a') + (key[plain[i] - 'a'] - 96) % 26) + 'a');
-       // printf("%i,", plain[i]);
-        //printf("%i,", (plain[i] - 'a') );
-        //printf("%i,", key[plain[i] - 'a'] - 96);
+        printf("%c", (key[plain[i] - 'a']));
+       
         
         }
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-        printf("%c", (((plain[i] - 'A') + (key[plain[i] - 'A'] - 96)) % 26) + 'A' );
+        printf("%c", (key[plain[i] - 'A']));
         }
       else {printf("%c", plain[i]);}
     }
