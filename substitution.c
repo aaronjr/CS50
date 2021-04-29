@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 
-
 int main(int argc, string argv[])
 {
 
@@ -33,19 +32,20 @@ int main(int argc, string argv[])
 
     // get plain text
     string plain = get_string("plaintext: ");
-    printf("ciphertext: ");
+    
 
     // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
-    for ( int i = 0, n = strlen(plain); i < n; i++){
+    for(int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
         printf("%c", key[plain[i] - 'a']);
         }
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
         printf("%c", key[plain[i] - 'A'] - 32);
         }
-      else {printf("%c", plain[i]);}
-    }
-
+      else{printf("%c", key[plain[i] + 0]);}
+ }
+    
+   
     //print new line
     printf("\n");
     //return 0
