@@ -44,10 +44,10 @@ int main(int argc, string argv[])
     // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
     for ( int p = 0, q = strlen(plain); p < q; p++){
       if (plain[p] >= 'a' && plain[p] <= 'z'){
-        printf("%c", (key[plain[p] - 'a']));
+        printf("%c", key[plain[p] - 'a']);
         }
       else if (plain[p] >= 'A' && plain[p] <= 'Z'){
-        printf("%c", (key[plain[p] - 'A'] + 32));
+        printf("%c", key[plain[p] - 'A'] + 32);
         }
       else {printf("%c", plain[p]);}
     }
