@@ -38,7 +38,7 @@ int main(int argc, string argv[])
    }
 
    //test for key
-   printf("The key is %s\n", key);
+   //printf("The key is %s\n", key);
 
     // get plain text
     string plain = get_string("plaintext: ");
