@@ -13,22 +13,18 @@ int main(int argc, string argv[])
    if (argc != 2){printf("Insert valid key\n"); return 1;}
    // check for 26 characters
    if(strlen(argv[1])!=26){printf("Insert 26 characters\n"); return 1;}
-    //check for duplicates
-   for(int d = 0, s = strlen(argv[1]); d < s; d++){
-       char c = argv[1][d];
-       for(int j = 0, k = strlen(argv[1]); j<k; j++){
-            if(c == argv[1][j]){
-                printf("No duplicate characters\n");
-                return 1;
-                
-            }
-            
-       }
-   }
+   
+   
    // check for alphabetical characters add to key
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
     if (argv[1][i] >= 'a' && argv[1][i] <= 'z'){
-         strncat(key, &argv[1][i], 1);
+        char c = argv[1][i];
+        for(int j = 0, k = strlen(argv[1]); j<k; j++){
+            if(c == argv[1][j]){
+                printf("No duplicate characters\n");
+                return 1;
+            }
+            else{strncat(key, &argv[1][i], 1);} }
        }
     else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z'){
          char q = (argv[1][i] + 32);
@@ -46,14 +42,14 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
 
     // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
-    for ( int i = 0, n = strlen(plain); i < n; i++){
-      if (plain[i] >= 'a' && plain[i] <= 'z'){
-        printf("%c", (key[plain[i] - 'a']));
+    for ( int p = 0, q = strlen(plain); p < q; p++){
+      if (plain[p] >= 'a' && plain[p] <= 'z'){
+        printf("%c", (key[plain[p] - 'a']));
         }
-      else if (plain[i] >= 'A' && plain[i] <= 'Z'){
-        printf("%c", (key[plain[i] - 'A']));
+      else if (plain[p] >= 'A' && plain[p] <= 'Z'){
+        printf("%c", (key[plain[p] - 'A']));
         }
-      else {printf("%c", plain[i]);}
+      else {printf("%c", plain[p]);}
     }
 
     //print new line
