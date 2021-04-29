@@ -44,7 +44,7 @@ int main(int argc, string argv[])
     string plain = get_string("plaintext: ");
     printf("ciphertext: ");
 
-    // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
+    // plain text to cipher 
     for ( int i = 0, n = strlen(plain); i < n; i++){
       if (plain[i] >= 'a' && plain[i] <= 'z'){
         printf("%c", (key[plain[i] - 'a']));
