@@ -17,29 +17,29 @@ int main(int argc, string argv[])
    // check for alphabeetical characters
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
         if (argv[1][i] >= 'a' && argv[1][i] <= 'z'){
-            for(int j = 0, k = strlen(argv[1]); j < k; j++){
+            for(int j = 0, k = strlen(key); j < k; j++){
                 if (argv[1][i] == key[j]){
                     printf("No duplicate characters.");
-                    return 1;
+                    
             }
-                else {strncat(key, &argv[1][i], 1);}
-           }
+         else {strncat(key, &argv[1][i], 1);}
+            }
         }
         else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z'){
-                for(int e = 0, r = strlen(argv[1]); e < r; e++){
+                for(int e = 0, r = strlen(key); e < r; e++){
                     if (argv[1][i] == key[e]){
                         printf("No duplicate characters.");
-                        return 1;
+                        
                     }
-                    else {char q = (argv[1][i] + 32);
-                 strncat(key, &q , 1);}
+                
+            else {char q = (argv[1][i] + 32);strncat(key, &q , 1);}
                 }
             }
        else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
 
    //test for key
-   //printf("The key is %s\n", key);
+   printf("The key is %s\n", key);
 
     // get plain text
     string plain = get_string("plaintext: ");
