@@ -23,7 +23,6 @@ int main(int argc, string argv[])
          char q = (argv[1][i] + 32);
          strncat(key, &q , 1);
       }
-
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
 
@@ -42,7 +41,7 @@ int main(int argc, string argv[])
       else if (plain[i] >= 'A' && plain[i] <= 'Z'){
         printf("%c", key[plain[i] - 'A'] - 32);
         }
-      else { printf("%c", key[plain[i]+0]);}
+      else { printf("%c", plain[i]);}
     }
     
     //print new line
