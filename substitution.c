@@ -32,7 +32,7 @@ int main(int argc, string argv[])
 
     // get plain text
     string plain = get_string("plaintext: ");
-    
+    printf("ciphertext: ");
 
     // to cipher - CURRENT ISSUE MATH PROBS NOT CORRECT
     for(int i = 0, n = strlen(plain); i < n; i++){
