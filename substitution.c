@@ -47,7 +47,7 @@ int main(int argc, string argv[])
         printf("%c", (key[plain[p] - 'a']));
         }
       else if (plain[p] >= 'A' && plain[p] <= 'Z'){
-        printf("%c", (key[plain[p] - 'A']));
+        printf("%c", (key[plain[p] - 'A'] + 32));
         }
       else {printf("%c", plain[p]);}
     }
