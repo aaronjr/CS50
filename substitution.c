@@ -12,6 +12,14 @@ int main(int argc, string argv[])
    if (argc != 2){printf("Insert valid key\n"); return 1;}
    // check for 26 characters
    if(strlen(argv[1])!=26){printf("Insert 26 characters\n"); return 1;}
+   //check for duplicates - HERE!    
+   for(int o = 0, m = strlen(argv[1]); o < m; o++){
+       for(int p = o + 1; p < m; p++){
+           if (argv[1][o] == argv[1][p])
+                {return 1; printf("No duplicate characters\n");}
+       }
+       
+   }
    // check for alphabeetical characters
    for(int i = 0, n = strlen(argv[1]); i < n; i++){
     if (argv[1][i] >= 'a' && argv[1][i] <= 'z'){
