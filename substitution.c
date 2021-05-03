@@ -4,10 +4,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 int main(int argc, string argv[])
 {
-
    char key[26] = "";
 
     // check 2 aruguments
@@ -25,9 +23,6 @@ int main(int argc, string argv[])
       }
    else {printf("Insert 26 alphabetical characters\n"); return 1;}
    }
-
-   //test for key
-   //printf("The key is %s\n", key);
 
     // get plain text
     string plain = get_string("plaintext: ");
