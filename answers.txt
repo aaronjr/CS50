@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: hello
+
+sort2 uses: merge sort
+
+How do you know?: the fast omega on large quantities of reversed numbers
+
+sort3 uses: selection sort
+
+How do you know?: just becasuse
