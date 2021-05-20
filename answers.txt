@@ -1,11 +1,11 @@
-sort1 uses: Merge sort
+sort1 uses: selection sort
 
 How do you know?: hello
 
-sort2 uses: Bubble sort
+sort2 uses: merge sort
 
 How do you know?: the fast omega on large quantities of reversed numbers
 
-sort3 uses: Selection sort
+sort3 uses: bubble sort
 
 How do you know?: just becasuse
