@@ -132,7 +132,7 @@ bool vote(int voter, int rank, string name)
     //Check name mates, add to array using voter number and rank - 1.
     for(int i = 0; i < candidate_count; i++){
     if(strcmp(candidates[i].name, name) == 0){
-        preferences[voter][rank - 1] += i;
+        preferences[voter][rank] += i;
         return true;
        }
     }
@@ -191,13 +191,13 @@ bool is_tie(int min)
             still_in ++;
         }
     }
-    
+
     for( int j = 0; j < candidate_count; j++){
             if(candidates[j].votes == min){
                 matches_min ++;
             }
         }
-        
+
     if(matches_min == still_in){
         return true;
     }
