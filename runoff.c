@@ -173,15 +173,13 @@ int find_min(void)
 {
     //check for person with lowest votes, compare, check if not eliminated and return their order in candidates array
     int lowest_vote = MAX_VOTERS;
-    int lowest_person = 0;
     for(int i = 0; i < candidate_count; i++){
         if(candidates[i].votes < lowest_vote && candidates[i].eliminated == false){
             lowest_vote = candidates[i].votes;
-            lowest_person = i;
-            return lowest_person;
+            return lowest_vote;
         }
     }
-    return lowest_person;
+    return lowest_vote;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
