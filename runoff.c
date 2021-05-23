@@ -140,7 +140,7 @@ bool vote(int voter, int rank, string name)
     return false;
 }
 
-// Tabulate votes for non-eliminated candidates
+// Tabulate votes for non-eliminated candidates // ISSUES HERE
 void tabulate(void)
 {
     //check if 1st preference is eliminated, if yes check second if not return
