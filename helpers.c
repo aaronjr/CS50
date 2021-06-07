@@ -26,21 +26,21 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             float g = image[i][j].rgbtGreen;
             float b = image[i][j].rgbtBlue;
             
-            image[i][j].rgbtRed = round(.393 * r + .769 * g + .189 * b);
+            image[i][j].rgbtRed = round(0.393 * r + 0.769 * g + 0.189 * b);
             if(image[i][j].rgbtRed > 255){
                 image[i][j].rgbtRed = 255;
             }
             else if(image[i][j].rgbtRed < 0){
                 image[i][j].rgbtRed = 0;
             }
-            image[i][j].rgbtGreen = round(.349 * r + .686 * g + .168 * b);
+            image[i][j].rgbtGreen = round(0.349 * r + 0.686 * g + 0.168 * b);
             if(image[i][j].rgbtGreen > 255){
                 image[i][j].rgbtGreen = 255;
             }
             else if(image[i][j].rgbtGreen < 0){
                 image[i][j].rgbtGreen = 0;
             }
-            image[i][j].rgbtBlue = round(.272 * r + .534 * g + .131 * b);
+            image[i][j].rgbtBlue = round(0.272 * r + 0.534 * g + 0.131 * b);
             if(image[i][j].rgbtBlue > 255){
                 image[i][j].rgbtBlue = 255;
             }
