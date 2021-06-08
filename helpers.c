@@ -70,15 +70,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width / 2; j++){
-            
-            RGBTRIPLE nullChecker[9] = {image[i-1][j-1],image[i-1][j],image[i-1][j+1],image[i][j-1],image[i][j],image[i][j+1],image[i+1][j-1],image[i+1][j],image[i+1][j+1]};
-            float counter = 0.0;
-            for(int k=0; k<9; k++){
-                if(k == 0)
-                {
-                    continue;
+            int counter = 0.0;
+            for(int h=-1; h<2; h++){
+                for(int w= -1; w<2; w++){
+                    if (i + h < 0 || i + h >= height){
+                    continue;}
+                    if (j + w < 0 || j + w >= width){
+                    continue;}
+                    else{counter++;}
                 }
-                else{counter++;}
             }
             
             int averageBlue = round((image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue + image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j+1].rgbtBlue) / counter);
@@ -92,3 +92,4 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     }
     return;
 }
+
