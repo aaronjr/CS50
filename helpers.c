@@ -70,9 +70,20 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width / 2; j++){
-            int averageBlue = round((image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue + image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j+1].rgbtBlue) / 9.0);
-            int averageGreen = round((image[i-1][j-1].rgbtGreen + image[i-1][j].rgbtGreen + image[i-1][j+1].rgbtGreen + image[i][j-1].rgbtGreen + image[i][j].rgbtGreen  + image[i][j+1].rgbtGreen  + image[i+1][j-1].rgbtGreen  + image[i+1][j].rgbtGreen  + image[i+1][j+1].rgbtGreen ) / 9.0);
-            int averageRed = round((image[i-1][j-1].rgbtRed + image[i-1][j].rgbtRed + image[i-1][j+1].rgbtRed + image[i][j-1].rgbtRed + image[i][j].rgbtRed  + image[i][j+1].rgbtRed  + image[i+1][j-1].rgbtRed  + image[i+1][j].rgbtRed  + image[i+1][j+1].rgbtRed ) / 9.0);
+            
+            RGBTRIPLE nullChecker[9] = {image[i-1][j-1],image[i-1][j],image[i-1][j+1],image[i][j-1],image[i][j],image[i][j+1],image[i+1][j-1],image[i+1][j],image[i+1][j+1]};
+            float counter = 0;
+            for(int k=0; k<9; k++){
+                if((k = 0))
+                {
+                    continue;
+                }
+                else{counter++;}
+            }
+            
+            int averageBlue = round((image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue + image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j+1].rgbtBlue) / counter);
+            int averageGreen = round((image[i-1][j-1].rgbtGreen + image[i-1][j].rgbtGreen + image[i-1][j+1].rgbtGreen + image[i][j-1].rgbtGreen + image[i][j].rgbtGreen  + image[i][j+1].rgbtGreen  + image[i+1][j-1].rgbtGreen  + image[i+1][j].rgbtGreen  + image[i+1][j+1].rgbtGreen ) / counter);
+            int averageRed = round((image[i-1][j-1].rgbtRed + image[i-1][j].rgbtRed + image[i-1][j+1].rgbtRed + image[i][j-1].rgbtRed + image[i][j].rgbtRed  + image[i][j+1].rgbtRed  + image[i+1][j-1].rgbtRed  + image[i+1][j].rgbtRed  + image[i+1][j+1].rgbtRed ) / counter);
             
             image[i][j].rgbtBlue = averageBlue;
             image[i][j].rgbtGreen = averageGreen;
