@@ -74,7 +74,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE nullChecker[9] = {image[i-1][j-1],image[i-1][j],image[i-1][j+1],image[i][j-1],image[i][j],image[i][j+1],image[i+1][j-1],image[i+1][j],image[i+1][j+1]};
             float counter = 0;
             for(int k=0; k<9; k++){
-                if((k = 0))
+                if((k == 0))
                 {
                     continue;
                 }
