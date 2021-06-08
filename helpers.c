@@ -71,23 +71,30 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width / 2; j++){
             float counter = 0.0;
+            int averageRed = 0;
+            int averageGreen = 0;
+            int averageBlue = 0;
+            
             for(int h=-1; h<2; h++){
                 for(int w= -1; w<2; w++){
                     if (i + h < 0 || i + h >= height){
-                    continue;}
+                    break;}
                     if (j + w < 0 || j + w >= width){
-                    continue;}
-                    else{counter++;}
+                    break;}
+                    else{
+                        counter++;
+                        averageBlue += image[i+h][j+w].rgbtBlue;
+                        averageGreen += image[i+h][j+w].rgbtGreen;
+                        averageRed += image[i+h][j+w].rgbtRed;
+                    }
                 }
             }
             
-            int averageBlue = round((image[i-1][j-1].rgbtBlue + image[i-1][j].rgbtBlue + image[i-1][j+1].rgbtBlue + image[i][j-1].rgbtBlue + image[i][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j+1].rgbtBlue) / counter);
-            int averageGreen = round((image[i-1][j-1].rgbtGreen + image[i-1][j].rgbtGreen + image[i-1][j+1].rgbtGreen + image[i][j-1].rgbtGreen + image[i][j].rgbtGreen  + image[i][j+1].rgbtGreen  + image[i+1][j-1].rgbtGreen  + image[i+1][j].rgbtGreen  + image[i+1][j+1].rgbtGreen ) / counter);
-            int averageRed = round((image[i-1][j-1].rgbtRed + image[i-1][j].rgbtRed + image[i-1][j+1].rgbtRed + image[i][j-1].rgbtRed + image[i][j].rgbtRed  + image[i][j+1].rgbtRed  + image[i+1][j-1].rgbtRed  + image[i+1][j].rgbtRed  + image[i+1][j+1].rgbtRed ) / counter);
             
-            image[i][j].rgbtBlue = averageBlue;
-            image[i][j].rgbtGreen = averageGreen;
-            image[i][j].rgbtRed = averageRed;
+            
+            image[i][j].rgbtBlue = round(averageBlue / counter);
+            image[i][j].rgbtGreen = round(averageGreen / counter);
+            image[i][j].rgbtRed = round(averageRed / counter);
         }
     }
     return;
