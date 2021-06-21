@@ -20,18 +20,19 @@ int main(int argc, char *argv[])
     }
     
     //Declare buffer
-    unsigned char buffer[512];
+    BYTE buffer[512];
     //keep track of current JPEGS found
     int counter = 0;
     //make new file to copy into
     FILE *output = NULL;
-    char *filename = malloc(8 * sizeof(char));
+    char filename[8];
+   
     
     //loop through file - 512 bytes at a time store in buffer
-    while(fread(&buffer,sizeof(char),512,file) != 0){
-               
+    while(fread(buffer, sizeof(char), 512, file) != 0)
+    {
         //check first 4 bytes
-        if(buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] &0xf0) == 0xe0) 
+        if(buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0) 
          {
            //make name
            sprintf(filename, "%03i.jpg", counter);
@@ -42,15 +43,16 @@ int main(int argc, char *argv[])
            //counter++
            counter++;
          }
-       
+           
+        else if (output != NULL)
+        {
+         fwrite(buffer, sizeof(buffer), 1, output);
+        }
     }
     
-      if (output != NULL)
-        {
-            fwrite(buffer, sizeof(char), 512, output);
-        }
+      
 
- free(filename);
+ 
  fclose(file);
  fclose(output);
  
