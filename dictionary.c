@@ -20,7 +20,7 @@ node;
 //counter
 int counter = 0;
 // Number of buckets in hash table
-const unsigned int N = 256;
+const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
@@ -28,77 +28,75 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    bool rtrn = 0;
-    int location = hash(word);
-    node *cursor = malloc(sizeof(node));
-    node *bucket = table[location];
-    for(cursor = bucket; cursor == NULL; cursor = cursor->next)
+    char tmp[LENGTH + 1];
+    for (int i = 0; i <= strlen(word); i++)
     {
-        if(strcasecmp(cursor->word, word)==0)
+        tmp[i] = tolower(word[i]);
+    }
+    
+    node *cursor = table[hash(tmp)];
+    while(cursor != NULL)
+    {
+        if(strcasecmp(word, cursor->word)==0)
         {
-            rtrn = true;
+            return true;
+        }
+        else
+        {
+            cursor = cursor->next;
         }
     }
     
-    return rtrn;
+    return false;
 }
 
-// Hashes word to a number
+/**
+*Returnes hash value.
+* this hash function was found on the internet but there was no author mentioned
+*/
 unsigned int hash(const char *word)
 {
-    unsigned int hash = 5381;
-    int c;
-    
-    // *str++ is going to the next address in memory, where the next char in the string is stored
-    while ((c = *word++))        
+   unsigned int hash = 0;
+    for (int i=0; word[i]!= '\0'; i++)
     {
-        if (isupper(c))
-        {
-            c = c + 32;
-        }
-
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c   // hash << 5 = hash * 2^5
+        hash = 31*hash + word[i];
     }
-
     return hash % N;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
-    bool rtrn;
     // open file
     FILE *file = fopen(dictionary, "r");
     if(file == NULL)
     {
         fclose(file);
-        rtrn = false;
+        printf("Could not open file\n");
+        return false;
     }
     //scan through each word, copy to a temp variable then use hash to give correct location
     char tmp[LENGTH + 1];
+    int location = 0;
     while(fscanf(file, "%s", tmp) != EOF){
-        node *n = malloc(sizeof(node));
+        
+        location = hash(tmp);
+        
+        node *n = malloc(sizeof(struct node));
+        if(n == NULL)
+        {
+            return false;
+        }
         strcpy(n -> word, tmp);
-        n -> next = NULL;
-        int location = hash(tmp);
+        
+        n -> next = table[location];
+        table[location] = n;
         counter++;
-        //below could be wrong
-        if(table[location]==NULL)
-        {
-            table[location] = n;
-            rtrn = true;
-        }
-        else
-        {
-            n->next = table[location];
-            table[location] = n;
-            rtrn = true;
-        }
-        
-        
+    
     }
-    // return bool value of rtrn
-    return rtrn;
+    // return bool value of rtrn, close file
+    fclose(file);
+    return true;
 }
 
 // Returns counter - if dictionary did not load it will return 0
@@ -111,6 +109,16 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
-    return false;
+    for(int i=0; i<N; i++)
+    {
+        node *cursor=table[i];
+        
+        while(cursor != NULL)
+        {
+            node *tmp = cursor;
+            cursor=cursor->next;
+            free(tmp);
+        }
+    }
+    return true;
 }
