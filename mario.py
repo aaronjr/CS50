@@ -12,7 +12,7 @@ for i in range (answer):
         print(" ", end="")
     for h in range (i + 1):
         print("#", end = "")
-    print(" ", end = "")
+    print("  ", end = "")
     for l in range (i + 1):
         print("#", end = "")
     print("")
