@@ -1,5 +1,6 @@
 from cs50 import get_int
 
+#prompt for answer
 answer = get_int("Pick a number between 1 - 8: ")
 
 while answer < 1 or answer > 8:
@@ -11,7 +12,7 @@ for i in range (answer):
         print(" ", end="")
     for h in range (i + 1):
         print("#", end = "")
-    print("  ", end = "")
+    print(" ", end = "")
     for l in range (i + 1):
         print("#", end = "")
     print(" ")
