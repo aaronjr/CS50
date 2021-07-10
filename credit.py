@@ -13,6 +13,8 @@ if len == 15:
 elif len == 16:
     if str[0] == "5" and str[1] == "1" or str[1] == "2" or str[1] == "3" or str[1] == "4" or str[1] == "5":
         print("MASTERCARD")
+    elif str[0] == 4:
+        print("VISA")
 elif len == 13 or len == 16:
     if str[0] == "4":
         print("VISA")
