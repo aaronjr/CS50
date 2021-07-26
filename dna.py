@@ -15,9 +15,9 @@ def main():
     sq_file = sys.argv[2]
     
     # Open CSV file and save to a dict
-    with open(datab_file, "r") as csvfile:
-        reader = DictReader(csvfile)
-        dict_list = list(reader)
+    with open(datab_file, "r") as csv:
+        reader = DictReader(csv)
+        datab= list(reader)
     # Open sequences file and convert to list
     with open(sq_file, "r") as file:
         sq = file.read()
@@ -44,13 +44,13 @@ def main():
                     max_counter[i - 1] = counter
 
     # Compare against data
-    for i in range(len(dict_list)):
+    for i in range(len(datab)):
         matches = 0
         for j in range(1, len(reader.fieldnames)):
-            if int(max_counter[j - 1]) == int(dict_list[i]  [reader.fieldnames[j]]):
+            if int(max_counter[j - 1]) == int(datab[i]  [reader.fieldnames[j]]):
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
-                print(dict_list[i]['name'])
+                print(datab[i]['name'])
                 exit(0)
     
     print("No match")
