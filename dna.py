@@ -14,8 +14,8 @@ def main():
     sequence_file = sys.argv[2]
     
     # open database - save to a list
-    with open(database_file, 'r') as csvfile:
-        reader = DictReader(csvfle)
+    with open(database_file, 'r') as csv:
+        reader = DictReader(csv)
         datab = list(reader)
     
     # open sequences_file and turn into a list
@@ -26,7 +26,7 @@ def main():
     max_repetition = []
     for i in range(1, len(reader.fieldnames)):
         s = reader.fieldnames[i]
-        max_repitition.append(0)
+        max_repetition.append(0)
         
         #iterate through the sequence to find s
         for j in range(len(sq)):
@@ -38,14 +38,14 @@ def main():
                     counter+= 1
                     ke += len(S)
                 #if new maximum of repitions - update max_repitions
-                if counter > max_repitions[i - 1]:
-                    max_repitions[i - 1] = counter
+                if counter > max_repetition[i - 1]:
+                   max_repetition[i - 1] = counter
    
     #compare against data
     for i in range(len(datab)):
         matches = 0
         for j in range(1, len(reader.fieldnames)):
-            if int(max_repititions[j-1]) == int(datab[i] [reader.fieldnames[j]])
+            if int(max_repetition[j-1]) == int(datab[i] [reader.fieldnames[j]]):
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
                 print(datab[i]["name"])
