@@ -49,6 +49,7 @@ def main():
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
                 print(datab[i]['name'])
+                exit(0)
    
     print("No match")   
                 
