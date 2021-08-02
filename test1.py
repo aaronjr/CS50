@@ -36,7 +36,7 @@ def main():
             # If match found, counter += 1
             if sq[j:j + len(s)] == s:
                 k = 0
-                while sq[j + k:j + k + len(s)] == s:
+                while sq[j + k : j + k + len(s)] == s:
                     counter += 1
                     k += len(s)
                 # if there is a  new maximum of repeats - update max_counter

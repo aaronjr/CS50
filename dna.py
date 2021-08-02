@@ -9,7 +9,7 @@ def main():
     # Ensure correct usage
     if len(sys.argv) != 3:
         sys.exit("Usage example: python dna.py databases/large.csv sequences/5.txt")
-
+        exit(1)
     database_file = sys.argv[1]
     sequence_file = sys.argv[2]
     
@@ -34,9 +34,9 @@ def main():
             #if match cound counter plus 1 
             if sq[j:j + len(s)] == s:
                 k=0
-                while sq[j + k : j + k + len(s) == s]:
-                    counter+= 1
-                    ke += len(S)
+                while sq[j + k : j + k + len(s)] == s:
+                    counter += 1
+                    k += len(s)
                 #if new maximum of repitions - update max_repitions
                 if counter > max_repetition[i - 1]:
                    max_repetition[i - 1] = counter
@@ -44,16 +44,15 @@ def main():
     #compare against data
     for i in range(len(datab)):
         matches = 0
-        matched = 0
         for j in range(1, len(reader.fieldnames)):
             if int(max_repetition[j-1]) == int(datab[i] [reader.fieldnames[j]]):
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
                 print(datab[i]['name'])
-                matched += 1
+                exit(0)
    
-    if matched == 0:
-        print("No match")   
+    
+    print("No match")   
                 
     
     
