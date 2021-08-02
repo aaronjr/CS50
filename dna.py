@@ -49,8 +49,9 @@ def main():
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
                 print(datab[i]['name'])
-            else: 
-                print("No match")
+   
+    print("No match")   
+                
     
     
 if __name__ == "__main__":
