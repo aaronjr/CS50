@@ -45,11 +45,11 @@ def main():
     for i in range(len(datab)):
         matches = 0
         for j in range(1, len(reader.fieldnames)):
-            if int(max_repetition[j-1]) == int(datab[i] [reader.fieldnames[j]]):
+            if int(max_repetition[j-1]) == int(datab[i][reader.fieldnames[j]]):
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
                 print(datab[i]['name'])
-            else 
+            else: 
                 print("No match")
     
     
