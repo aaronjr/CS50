@@ -48,7 +48,7 @@ def main():
             if int(max_repetition[j-1]) == int(datab[i][reader.fieldnames[j]]):
                 matches += 1
             if matches == (len(reader.fieldnames) - 1):
-                print(datab[i]['name'])
+                print(database_file[i]['name'])
    
     print("No match")   
                 
