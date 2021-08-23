@@ -1,1 +1,1 @@
-select name from songs order by duration_ms desc limit 5;
+SELECT name FROM songs ORDER BY duration_ms DESC limit 5;

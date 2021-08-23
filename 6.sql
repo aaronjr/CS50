@@ -1,1 +1,1 @@
-select name from songs where artist_id = (select id from artists where name = 'Post Malone');
+SELECT name FROM songs WHERE artist_id = (SELECT id FROM artists WHERE name = 'Post Malone');
