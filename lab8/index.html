@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            
+            function alertName1(event)
+            {
+                let trigger1 = event.srcElement;
+                if (trigger1.innerHTML == "Manchester United")
+                {
+                     let answer1 = document.querySelector('#answer1');
+                     trigger1.classList.add('correct');
+                     answer1.innerHTML = "CORRECT";
+                }
+                else
+                {
+                    let answer1 = document.querySelector('#answer1');
+                    trigger1.classList.add('wrong');
+                    answer1.innerHTML = "INCORRECT";
+                }
+            }
+            
+            function check(event)
+            {
+                    let answer = document.querySelector("#answer").value;
+                    let box = document.querySelector("#answer");
+                    let answer2 = document.querySelector('#answer2');
+                    if (answer == "London" || answer == "london")
+                    {
+                        answer2.innerHTML = "CORRECT";
+                        box.classList.add('correct');
+                        
+                    }
+                    else{
+                        answer2.innerHTML = "INCORRECT";
+                        box.classList.add('wrong');
+                        
+                    }
+            }
+
+            
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <h3>Which club did Ronaldo sign for in 2021?</h3>
+                <div class="buttons1">
+                    <button onclick="alertName1(event)" class="btn1">Real Madrid</button>
+                    <button onclick="alertName1(event)" class="btn1">Manchester United</button>
+                    <button onclick="alertName1(event)" class="btn1">Barcelona</button>
+                    <button onclick="alertName1(event)" class="btn1">PSG</button>
+                    <button onclick="alertName1(event)" class="btn1">AC Milan</button>
+                </div>
+                <p id="answer1"> </p>
+            
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <h3>What is the capital of England</h3>
+                <form onsubmit="check(event); return false">
+                    <input type=text id="answer">
+                    <input type=submit >
+                </form>
+                <p id="answer2"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
