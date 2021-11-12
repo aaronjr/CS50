@@ -68,7 +68,7 @@ def buy():
         if lookup(symbol) == None:
             return apology("No share found", 400)
         
-        if type(share) != int:
+        if type(share) != int or type(share) != float:
             return apology("Must input a number", 400)
         else:
             shares = int(float(share))
