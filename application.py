@@ -65,15 +65,15 @@ def buy():
         symbol = request.form.get("symbol")
         share = request.form.get("shares")
 
-        shares = int(float(share))
-
         if lookup(symbol) == None:
             return apology("No share found", 400)
 
-        print(type(shares))
+        print(type(share))
 
-        if type(shares) != int and type(shares) != float:
+        if type(share) == string:
             return apology("Must input a number", 400)
+        else: 
+             shares = int(float(share))
 
         if shares < 1:
             return apology("Shares requested must be greater than 0", 400)
