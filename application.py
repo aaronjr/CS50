@@ -66,7 +66,10 @@ def buy():
         shares = int(float(request.form.get("shares")))
         if lookup(symbol) == None:
             return apology("No share found", 400)
-        if shares < 1:
+        
+        if type(shares) != 'int':
+            return apology("Must input a number", 400)
+        elif shares < 1:
             return apology("Shares requested must be greater than 0", 400)
         elif shares % 1 != 0:
             return apology("Must be a whole share", 400)
