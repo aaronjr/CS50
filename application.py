@@ -64,15 +64,17 @@ def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         share = request.form.get("shares")
-        
+
+        shares = int(float(share))
+
         if lookup(symbol) == None:
             return apology("No share found", 400)
-        
-        if type(share) != int or type(share) != float:
+
+        print(type(shares))
+
+        if type(shares) != int and type(shares) != float:
             return apology("Must input a number", 400)
-        else:
-            shares = int(float(share))
-            
+
         if shares < 1:
             return apology("Shares requested must be greater than 0", 400)
         elif shares % 1 != 0:
@@ -88,8 +90,8 @@ def buy():
         #empty list to compare to
         empty = []
         checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
-        
-      
+
+
 
         if cash - (shares * quote["price"]) < 0:
             return apology("Not enough money", 400)
@@ -233,7 +235,7 @@ def sell():
         symbol = request.form.get("symbol")
         shares = int(request.form.get("shares"))
         quote = lookup(symbol)
-        
+
         if shares < 1:
             return apology("Shares to sell must be greater than 0", 403)
 
