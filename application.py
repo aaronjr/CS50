@@ -70,7 +70,7 @@ def buy():
 
         print(type(share))
 
-        if type(share) == string:
+        if type(share) == str:
             return apology("Must input a number", 400)
         else: 
              shares = int(float(share))
