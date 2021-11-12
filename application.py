@@ -298,8 +298,10 @@ def sell():
                         session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
 
         else:
-             return apology("You do not have enough shares", 400)
-
+            return apology("You do not have enough shares", 400)
+        
+        return redirect("/")
+            
     if request.method == "GET":
 
         symbol = db.execute("SELECT symbol from shares WHERE username = ? GROUP BY symbol", session["user_id"])
