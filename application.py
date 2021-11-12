@@ -63,7 +63,7 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        shares = int(request.form.get("shares"))
+        shares = int(float(request.form.get("shares")))
         if lookup(symbol) == None:
             return apology("No share found", 400)
         if shares < 1:
