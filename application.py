@@ -68,6 +68,8 @@ def buy():
             return apology("No share found", 400)
         if shares < 1:
             return apology("Shares requested must be greater than 0", 400)
+        elif shares % 1 != 0:
+            return apology("Must be a whole share", 400)
 
         quote = lookup(symbol)
         CASH = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
@@ -80,8 +82,7 @@ def buy():
         empty = []
         checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
         
-        if shares == < 0 or shares % 1 != 0;
-            return apology("Must be a whole share", 400)
+      
 
         if cash - (shares * quote["price"]) < 0:
             return apology("Not enough money", 400)
