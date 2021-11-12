@@ -79,6 +79,9 @@ def buy():
         #empty list to compare to
         empty = []
         checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
+        
+        if shares == < 0 or shares % 1 != 0;
+            return apology("Must be a whole share", 400)
 
         if cash - (shares * quote["price"]) < 0:
             return apology("Not enough money", 400)
