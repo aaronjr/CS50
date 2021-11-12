@@ -65,9 +65,9 @@ def buy():
         symbol = request.form.get("symbol")
         shares = int(request.form.get("shares"))
         if lookup(symbol) == None:
-            return apology("No share found", 403)
+            return apology("No share found", 400)
         if shares < 1:
-            return apology("Shares requested must be greater than 0", 403)
+            return apology("Shares requested must be greater than 0", 400)
 
         quote = lookup(symbol)
         CASH = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
@@ -81,7 +81,7 @@ def buy():
         checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
 
         if cash - (shares * quote["price"]) < 0:
-            return apology("Not enough money", 403)
+            return apology("Not enough money", 400)
 
         elif checkstock == empty:
             cost = shares * quote["price"]
@@ -184,15 +184,15 @@ def register():
     if request.method == "POST":
          # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must provide username", 403)
+            return apology("must provide username", 400)
 
          # Ensure password was submitted
         elif not request.form.get("password"):
-            return apology("must provide password", 403)
+            return apology("must provide password", 400)
 
         # Ensure passwords match
         elif request.form.get("password") != request.form.get("confirmation"):
-            return apology("Passwords do not match", 403)
+            return apology("Passwords do not match", 400)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
@@ -201,7 +201,7 @@ def register():
         password = request.form.get("password")
         # Ensure username does not exist
         if len(rows) >= 1:
-           return apology("Username already exists", 403)
+           return apology("Username already exists", 400)
 
         else:
             db.execute("INSERT INTO users (username, hash) VALUES(?,?)", username, generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
@@ -237,7 +237,7 @@ def sell():
         cash = CASH[0]["cash"]
 
         if shares == 0:
-            return apology("Must chose more than 0 shares to sell", 403)
+            return apology("Must chose more than 0 shares to sell", 400)
 
         elif checksymbol[0]["total_shares"] == shares:
             cost = shares * quote["price"]
@@ -255,7 +255,7 @@ def sell():
             db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
 
         else:
-             return apology("You do not have enough shares", 403)
+             return apology("You do not have enough shares", 400)
 
 
         return redirect("/")
