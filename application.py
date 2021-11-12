@@ -28,7 +28,6 @@ def after_request(response):
 # Custom filter
 app.jinja_env.filters["usd"] = usd
 
-
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
@@ -47,14 +46,39 @@ if not os.environ.get("API_KEY"):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    count = db.execute("SELECT symbol, price, name, sum(total_shares) AS shares from shares WHERE username = ? GROUP BY symbol", session["user_id"])
+    count = db.execute(
+        "SELECT symbol, price, name, sum(total_shares) AS shares from shares WHERE username = ? GROUP BY symbol", session["user_id"])
     cash = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
 
     for symbol in count:
         query = lookup(symbol["symbol"])
         symbol["price"] = query["price"]
 
-    return render_template("index.html", counts = count, cash = cash)
+    return render_template("index.html", counts=count, cash=cash)
+
+@app.route("/cpassword",  methods=["GET", "POST"])
+@login_required
+def cpassword():
+    if request.method == "POST":
+        current = request.form.get("password")
+        pass1 = request.form.get("newpassword1")
+        pass2 = request.form.get("newpassword2")
+
+        rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+
+        if check_password_hash(rows[0]["hash"], current):
+            print("match")
+            if pass1 == pass2:
+                db.execute("UPDATE users set hash = ? WHERE id =  ?", generate_password_hash(
+                    pass1, method='pbkdf2:sha256', salt_length=8), session["user_id"])
+                return redirect("/")
+            else:
+                return apology("New passwords do not match", 400)
+        else:
+            return apology("Current password does not match", 400)
+
+    else:
+        return render_template("cpassword.html")
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -64,13 +88,12 @@ def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         share = request.form.get("shares")
-        
 
         if lookup(symbol) == None:
             return apology("No share found", 400)
         elif not share.isdigit() or int(share) < 1:
             return apology("share must be at least 1", 400)
-        
+
         shares = int(share)
 
         if shares < 1:
@@ -80,16 +103,15 @@ def buy():
 
         quote = lookup(symbol)
         CASH = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
-        #get cash value
+        # get cash value
         cash = CASH[0]["cash"]
-        #time
+        # time
         date = datetime.datetime.now()
         now = date.strftime("%c")
-        #empty list to compare to
+        # empty list to compare to
         empty = []
-        checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
-
-
+        checkstock = db.execute("SELECT symbol from shares where username = ? and symbol = ? GROUP BY symbol", 
+            session["user_id"], quote["symbol"])
 
         if cash - (shares * quote["price"]) < 0:
             return apology("Not enough money", 400)
@@ -98,18 +120,23 @@ def buy():
             cost = shares * quote["price"]
             left = cash - cost
             db.execute("UPDATE users SET cash = ? WHERE id = ?", left, session["user_id"])
-            db.execute("INSERT INTO shares (username, symbol, name, price, total_shares, time) VALUES(?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now)
-            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "bought")
+            db.execute("INSERT INTO shares (username, symbol, name, price, total_shares, time) VALUES(?,?,?,?,?,?)",
+                        session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now)
+            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",
+                        session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "bought")
             return redirect("/")
 
         elif quote["symbol"] == checkstock[0]["symbol"]:
             cost = shares * quote["price"]
             left = cash - cost
-            currentshares = db.execute("SELECT total_shares from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
+            currentshares = db.execute(
+                "SELECT total_shares from shares where username = ? and symbol = ? GROUP BY symbol", session["user_id"], quote["symbol"])
             newshares = currentshares[0]["total_shares"] + shares
-            db.execute("UPDATE shares SET total_shares = ? WHERE username = ? and symbol = ?", newshares, session["user_id"], quote["symbol"])
+            db.execute("UPDATE shares SET total_shares = ? WHERE username = ? and symbol = ?",
+                newshares, session["user_id"], quote["symbol"])
             db.execute("UPDATE users SET cash = ? WHERE id = ?", left, session["user_id"])
-            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "bought")
+            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",
+                session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "bought")
             return redirect("/")
 
     else:
@@ -121,11 +148,12 @@ def buy():
 def history():
     """Show history of transactions"""
 
-    count = db.execute("SELECT symbol, price, name, time, type, total_shares as shares from history WHERE username = ?", session["user_id"])
+    count = db.execute(
+        "SELECT symbol, price, name, time, type, total_shares as shares from history WHERE username = ?", session["user_id"])
     cash = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
     sold = "sold"
 
-    return render_template("history.html", counts = count, cash = cash, sold = sold)
+    return render_template("history.html", counts=count, cash=cash, sold=sold)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -183,7 +211,7 @@ def quote():
         symbol = request.form.get("symbol")
         if lookup(symbol) == None:
             return apology("No share found", 400)
-        return render_template("quoted.html", quote = lookup(symbol))
+        return render_template("quoted.html", quote=lookup(symbol))
 
     if request.method == "GET":
         return render_template("quote.html")
@@ -193,7 +221,7 @@ def quote():
 def register():
 
     if request.method == "POST":
-         # Ensure username was submitted
+        # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 400)
 
@@ -212,7 +240,7 @@ def register():
         password = request.form.get("password")
         # Ensure username does not exist
         if len(rows) >= 1:
-           return apology("Username already exists", 400)
+            return apology("Username already exists", 400)
 
         else:
             db.execute("INSERT INTO users (username, hash) VALUES(?,?)", username, generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
@@ -237,14 +265,15 @@ def sell():
         if shares < 1:
             return apology("Shares to sell must be greater than 0", 403)
 
-        checksymbol = db.execute("SELECT symbol, total_shares from shares WHERE symbol = ? and username = ?", symbol, session["user_id"])
+        checksymbol = db.execute("SELECT symbol, total_shares from shares WHERE symbol = ? and username = ?", 
+                                symbol, session["user_id"])
 
-         #time
+        # time
         date = datetime.datetime.now()
         now = date.strftime("%c")
 
         CASH = db.execute("SELECT cash from users WHERE id = ?", session["user_id"])
-        #get cash value
+        # get cash value
         cash = CASH[0]["cash"]
 
         if shares == 0:
@@ -255,26 +284,26 @@ def sell():
             left = cash + cost
             db.execute("UPDATE users SET cash = ? WHERE id = ?", left, session["user_id"])
             db.execute("DELETE from shares where username = ? and symbol = ?", session["user_id"], symbol)
-            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
+            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",
+                        session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
 
         elif symbol == checksymbol[0]["symbol"] and shares <= checksymbol[0]["total_shares"]:
             newshares = checksymbol[0]["total_shares"] - shares
             cost = shares * quote["price"]
             left = cash + cost
             db.execute("UPDATE users SET cash = ? WHERE id = ?", left, session["user_id"])
-            db.execute("UPDATE shares SET total_shares = ? WHERE username = ? and symbol = ?", newshares, session["user_id"], quote["symbol"])
-            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
+            db.execute("UPDATE shares SET total_shares = ? WHERE username = ? and symbol = ?", 
+                        newshares, session["user_id"], quote["symbol"])
+            db.execute("INSERT INTO history (username, symbol, name, price, total_shares, time, type) VALUES(?,?,?,?,?,?,?)",
+                        session["user_id"], quote["symbol"], quote["name"], quote["price"], shares, now, "sold")
 
         else:
              return apology("You do not have enough shares", 400)
 
-
-        return redirect("/")
-
     if request.method == "GET":
 
         symbol = db.execute("SELECT symbol from shares WHERE username = ? GROUP BY symbol", session["user_id"])
-        return render_template("sell.html", symbols = symbol)
+        return render_template("sell.html", symbols=symbol)
 
 
 def errorhandler(e):
