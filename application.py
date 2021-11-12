@@ -299,9 +299,6 @@ def sell():
 
         else:
              return apology("You do not have enough shares", 400)
-             
-    else:
-        return redirect("/")
 
     if request.method == "GET":
 
