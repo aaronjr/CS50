@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  INDEX
+{% endblock %}
+
+{% block main %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Shares</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        {% for count in counts %}
+                            <tr>
+                               <td name="{{count.symbol}}">{{count.symbol}}</td>
+                               <td>{{count.shares}}</td>
+                              {%if count.name == ""%}
+                                   <td>-</td>
+                              {%else%}
+                               <td>{{count.name}}</td>
+                               {% endif %}
+                               <td>{{count.price | usd}}</td> 
+                               <td>{% set shares = count.shares %} {% set price = count.price %} {% set price = shares * price%} {{price | usd}}</td>
+                           </tr>
+                        {% endfor %}
+                        {% for cash in cash %}
+                            <tr>
+                                <td>CASH</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>{{cash.cash | usd}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+{% endblock %}
