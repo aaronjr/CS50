@@ -171,7 +171,7 @@ def quote():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         if lookup(symbol) == None:
-            return apology("No share found", 400
+            return apology("No share found", 400)
         return render_template("quoted.html", quote = lookup(symbol))
 
     if request.method == "GET":
