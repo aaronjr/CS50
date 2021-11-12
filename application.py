@@ -63,28 +63,13 @@ def buy():
     """Buy shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        share = request.form.get("shares")
+        shares = request.form.get("shares")
         
-        if float(share) == 1:
-            print("1")
-        if float(share) == 0:
-            print("0ç")
-        
-        if type(share) == str:
-            if float(share) == 1:
-                shares = float(share)
-            else:
-                return apology("Must input a number", 400)
-                
-        print(type(shares))
 
         if lookup(symbol) == None:
             return apology("No share found", 400)
-
-        print(type(shares))
-
-        if type(shares) != int and type(shares) != float:
-            return apology("Must input a number", 400)
+        elif not shares.isdigit() or int(shares) < 1:
+            return apology("share must be at least 1", 400)
 
         if shares < 1:
             return apology("Shares requested must be greater than 0", 400)
