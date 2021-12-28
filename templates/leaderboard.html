@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Leaderboard
+{% endblock %}
+
+{% block main %}
+
+<div class="outerbody">
+    {% include 'navbar.html' %}
+</div>
+
+<div class="leadcont">
+
+  <h1 class="h1leader"> Leaderboard </h1>
+  <div class="board">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Cards used</th>
+          <th>Sips taken</th>
+          <th>Perfect score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for player in scores %}
+        <tr>
+          <td>{{player.name}}</td>
+          <td>{{player.left}}</td>
+          <td>{{player.sips}}</td>
+          <td>{{player.perfect}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}
