@@ -4,26 +4,28 @@
 
 int main(void)
 {
-//get input
-int input;
-
-do  {
-    input = get_int("height of tower: ");
-    }
-while (input > 8 || input < 1);
-
-// work out
-
-for (int i = 0; i<input; i++){
-    for (int j = input - 1; j > i; j--)
+    //get input
+    int input;
+    
+    do
     {
-        printf(" ");
+        input = get_int("height of tower: ");
     }
-    for (int h = -1; h < i; h++)
+    while (input > 8 || input < 1);
+    
+    // work out
+    
+    for (int i = 0; i < input; i++)
     {
-        printf("#");
+        for (int j = input - 1; j > i; j--)
+        {
+            printf(" ");
+        }
+        for (int h = -1; h < i; h++)
+        {
+            printf("#");
+        }
+        printf("\n");
     }
-    printf("\n");
-}
 
 }
