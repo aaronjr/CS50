@@ -55,8 +55,8 @@ int main(int argc, string argv[])
         // Check for invalid vote
         if (!vote(name))
         {
-           printf("Invalid vote.\n");
-           i -= 1;
+            printf("Invalid vote.\n");
+            i -= 1;
         }
 
     }
@@ -69,13 +69,15 @@ int main(int argc, string argv[])
 bool vote(string name)
 {
 
-    for(int i = 0; i < candidate_count; i++){
-        if( strcmp(candidates[i].name, name) ==0 ){
-          candidates[i].votes++;
-          return true;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(candidates[i].name, name) == 0)
+        {
+            candidates[i].votes++;
+            return true;
         }
     }
-  return false;
+    return false;
 }
 
 // Print the winner (or winners) of the election
@@ -84,15 +86,20 @@ void print_winner(void)
     int highestvotes = 0;
     //find highest number of votes
     for (int i = 0; i < candidate_count; i++)
-     { if(candidates[i].votes > highestvotes){
-         highestvotes = candidates[i].votes;}
-     }
-     //find winner
-     for (int j = 0; j < candidate_count; j++){
-         if(highestvotes == candidates[j].votes){
-             printf("%s\n", candidates[j].name);
-         }
-     }
+    { 
+        if (candidates[i].votes > highestvotes)
+        {
+            highestvotes = candidates[i].votes;
+        }
+    }
+    //find winner
+    for (int j = 0; j < candidate_count; j++)
+    {
+        if (highestvotes == candidates[j].votes)
+        {
+            printf("%s\n", candidates[j].name);
+        }
+    }
     // TODO
     return;
 }
