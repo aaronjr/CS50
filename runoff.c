@@ -130,11 +130,13 @@ int main(int argc, string argv[])
 bool vote(int voter, int rank, string name)
 {
     //Check name mates, add to array using voter number and rank - 1.
-    for(int i = 0; i < candidate_count; i++){
-    if(strcmp(candidates[i].name, name) == 0){
-        preferences[voter][rank] += i;
-        return true;
-       }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(candidates[i].name, name) == 0)
+        {
+            preferences[voter][rank] += i;
+            return true;
+        }
     }
     // if no matches return false
     return false;
@@ -144,22 +146,25 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     //check if 1st preference is eliminated, if yes check second if not return
-    for(int i = 0; i < voter_count; i++){
-        for(int j = 0; j < candidate_count; j++)
-        if (candidates[preferences[i][j]].eliminated == false){
-            candidates[preferences[i][j]].votes ++;
-            j = candidate_count;
-        }
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+            if (candidates[preferences[i][j]].eliminated == false)
+            {
+                candidates[preferences[i][j]].votes ++;
+                j = candidate_count;
+            }
     }
-  
 }
 
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
     //check if any candidate has more than 50% of votes
-    for(int i = 0; i < candidate_count; i++){
-        if(candidates[i].votes > voter_count / 2){
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > voter_count / 2)
+        {
             printf("%s\n", candidates[i].name);
             return true;
         }
@@ -173,8 +178,10 @@ int find_min(void)
 {
     //check for person with lowest votes, compare, check if not eliminated and return their order in candidates array
     int lowest_vote = MAX_VOTERS;
-    for(int i = 0; i < candidate_count; i++){
-        if(candidates[i].votes < lowest_vote && candidates[i].eliminated == false){
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes < lowest_vote && candidates[i].eliminated == false)
+        {
             lowest_vote = candidates[i].votes;
         }
     }
@@ -186,19 +193,24 @@ bool is_tie(int min)
 {
     int still_in = 0;
     int matches_min = 0;
-    for(int i = 0; i < candidate_count; i++){
-        if(candidates[i].eliminated == false){
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].eliminated == false)
+        {
             still_in ++;
         }
     }
 
-    for( int j = 0; j < candidate_count; j++){
-            if(candidates[j].votes == min){
-                matches_min ++;
-            }
+    for (int j = 0; j < candidate_count; j++)
+    {
+        if (candidates[j].votes == min)
+        {
+            matches_min ++;
         }
+    }
 
-    if(matches_min == still_in){
+    if (matches_min == still_in)
+    {
         return true;
     }
     // TODO
@@ -208,10 +220,12 @@ bool is_tie(int min)
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
-    for(int i = 0; i < candidate_count; i++){
-            if(candidates[i].votes == min && candidates[i].eliminated == false){
-               candidates[i].eliminated = true;
-            }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == min && candidates[i].eliminated == false)
+        {
+            candidates[i].eliminated = true;
         }
+    }
     return;
 }
