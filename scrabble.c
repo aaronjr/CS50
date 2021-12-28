@@ -22,37 +22,49 @@ int main(void)
     int score2 = compute_score(word2);
     string champion = winner(score1, score2);
 
-    // TODO: Print the winner
+    // Print the winner
     printf("score 1 is: %i\n", score1);
     printf("score 2 is: %i\n", score2);
     printf("The winner is: %s\n", champion);
 }
 
-    //compare scores & return winner
-    string winner(int a, int b)
+//compare scores & return winner
+string winner(int a, int b)
+{
+    // check is a bigger than b then which player won
+    if (a > b)
     {
-    if( a >  b)
-    {return "player 1 wins";}
-    else if ( a <  b)
-    {return "player 2 wins";}
-    else {return "Tie";}
+        return "player 1 wins";
     }
+    else if (a <  b)
+    {
+        return "player 2 wins";
+    }
+    else 
+    {
+        return "Tie";
+    }
+}
 
-
+// compute the score
 int compute_score(string word)
-   {
-     int score = 0;
+{
+    int score = 0;
 
-    for(int i=0, n=strlen(word); i<n; i++)
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        // check for capital and use ascii
+        if (word[i] >= 'A' && word[i] <= 'Z')
         {
-        if (word[i] >= 'A' && word[i] <= 'Z'){
-         score += POINTS[word[i] - 65];
+            score += POINTS[word[i] - 65];
         }
-        else if (word[i] >= 'a' && word[i] <= 'z'){
-         score += POINTS[word[i] - 97];
+        // check for small letter and use ascii
+        else if (word[i] >= 'a' && word[i] <= 'z')
+        {
+            score += POINTS[word[i] - 97];
         }
         
-        }
-     return score;   
-   }
+    }
+    return score;   
+}
 
