@@ -54,7 +54,8 @@ int main(int argc, char *argv[])
       
 
  
-    fclose(file, output);
+    fclose(file);
+    fclose(output);
  
     return 0;
 }
