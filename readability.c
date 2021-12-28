@@ -14,7 +14,7 @@ int main(void)
 {
 
 //get input
-string input = get_string("Text: ");
+    string input = get_string("Text: ");
 
 //calculate each type
     float letter = letters(input);
@@ -32,37 +32,58 @@ string input = get_string("Text: ");
 
 //print grade level
     
-    if (index < 1){printf("Before Grade 1\n");}
-    else if (index >= 1 && index <16){printf("Grade %i\n", index);}
-    else if (index >= 16){printf("Grade 16+\n");}
+    if (index < 1)
+    {
+        printf("Before Grade 1\n");
+    }
+    else if (index >= 1 && index < 16)
+    {
+        printf("Grade %i\n", index);
+    }
+    else if (index >= 16)
+    {
+        printf("Grade 16+\n");
+    }
 
 
 }
 //calculate letters
-float letters (string input){
+float letters(string input)
+{
     int letter = 0;
-    for (int i = 0, n=strlen(input); i < n; i++){
-        if ((input[i] >= 'A' && input[i] <= 'Z') || (input[i] >= 'a' && input[i] <= 'z' )){
-             letter++;}
+    for (int i = 0, n = strlen(input); i < n; i++)
+    {
+        if ((input[i] >= 'A' && input[i] <= 'Z') || (input[i] >= 'a' && input[i] <= 'z'))
+        {
+            letter++;
+        }
     }
     return letter;
 }
 //calculate words
-float words (string input){
+float words(string input)
+{
     int word = 0;
-    for (int i = 0, n=strlen(input); i < n; i++){
-         if (input[i] == 32){
-            word++;}
+    for (int i = 0, n = strlen(input); i < n; i++)
+    {
+        if (input[i] == 32)
+        {
+            word++;
+        }
     }
     return word;
 }
 //calcultae sentences
-float sentences (string input){
+float sentences(string input)
+{
     int sentence = 0;
-    for (int i = 0, n=strlen(input); i < n; i++){
-         if ( input[i] == 46 || input[i] == 33 || input[i] == 63 ){
-            sentence ++;}
+    for (int i = 0, n = strlen(input); i < n; i++)
+    {
+        if (input[i] == 46 || input[i] == 33 || input[i] == 63)
+        {
+            sentence ++;
+        }
     }
     return sentence;
-    }
+}
 
