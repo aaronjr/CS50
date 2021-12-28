@@ -1,24 +1,33 @@
 from cs50 import get_int
 
+# check if card is valid
+
+
 def is_valid(cc):
+    # take input convert to string and find length
     strg = str(cc)
     leng = len(strg)
     
     g = ""
-    for i in range (leng -2, -1, -2):
+    # use algorithm to jump though card number
+    for i in range(leng - 2, - 1, - 2):
+                        
         multiply = int(strg[i]) * 2
         g += str(multiply)
     
-    missed = []
-    for k in range (leng -1, -1, -2):
-        missed.append(int(strg[k]))
+        missed = []
+        
+        for k in range(leng - 1, - 1, - 2):
+            missed.append(int(strg[k]))
         
     total = 0
-    for j in range(0,len(g),1):
+    # use algorithm to jump though card number
+    for j in range(0, len(g), 1):
         total += int(g[j])
     
     p = 0
-    for l in range(0,len(missed),1):
+    # use algorithm to jump though card number
+    for l in range(0, len(missed), 1):
         p += missed[l]
         
     sum = p + total
@@ -27,7 +36,10 @@ def is_valid(cc):
         return 0
     else:
         return 1
-    
+        
+# take cc number and checks which brand it is.
+
+
 def number(cc):
     strg = str(cc)
     leng = len(strg)
@@ -44,7 +56,11 @@ def number(cc):
             print("VISA")
     else:
         print("INVALID")
-        
+    
+    
+# main function prompts user for their number
+
+
 def main():        
     
     cc = get_int("Enter credit card number: ")
@@ -56,5 +72,6 @@ def main():
     else:
         print("INVALID")
 
-if __name__=="__main__":
-    main()
+
+if __name__ == "__main__":
+    main()yes
