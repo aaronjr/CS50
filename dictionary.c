@@ -33,11 +33,11 @@ bool check(const char *word)
     {
         tmp[i] = tolower(word[i]);
     }
-    
+
     node *cursor = table[hash(tmp)];
-    while(cursor != NULL)
+    while (cursor != NULL)
     {
-        if(strcasecmp(word, cursor->word)==0)
+        if (strcasecmp(word, cursor->word) == 0)
         {
             return true;
         }
@@ -46,7 +46,7 @@ bool check(const char *word)
             cursor = cursor->next;
         }
     }
-    
+
     return false;
 }
 
@@ -56,10 +56,10 @@ bool check(const char *word)
 */
 unsigned int hash(const char *word)
 {
-   unsigned int hash = 0;
-    for (int i=0; word[i]!= '\0'; i++)
+    unsigned int hash = 0;
+    for (int i = 0; word[i] != '\0'; i++)
     {
-        hash = 31*hash + word[i];
+        hash = 31 * hash + word[i];
     }
     return hash % N;
 }
@@ -69,7 +69,7 @@ bool load(const char *dictionary)
 {
     // open file
     FILE *file = fopen(dictionary, "r");
-    if(file == NULL)
+    if (file == NULL)
     {
         fclose(file);
         printf("Could not open file\n");
@@ -78,21 +78,21 @@ bool load(const char *dictionary)
     //scan through each word, copy to a temp variable then use hash to give correct location
     char tmp[LENGTH + 1];
     int location = 0;
-    while(fscanf(file, "%s", tmp) != EOF){
-        
+    while (fscanf(file, "%s", tmp) != EOF)
+    {
         location = hash(tmp);
-        
+
         node *n = malloc(sizeof(struct node));
-        if(n == NULL)
+        if (n == NULL)
         {
             return false;
         }
         strcpy(n -> word, tmp);
-        
+
         n -> next = table[location];
         table[location] = n;
         counter++;
-    
+
     }
     // return bool value of rtrn, close file
     fclose(file);
@@ -109,14 +109,14 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    for(int i=0; i<N; i++)
+    for (int i = 0; i < N; i++)
     {
-        node *cursor=table[i];
-        
-        while(cursor != NULL)
+        node *cursor = table[i];
+
+        while (cursor != NULL)
         {
             node *tmp = cursor;
-            cursor=cursor->next;
+            cursor = cursor->next;
             free(tmp);
         }
     }
