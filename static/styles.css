@@ -1,0 +1,334 @@
+
+body{
+    background: linear-gradient(to left top, pink, orange) fixed;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: auto;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+button{
+    padding:0;
+    margin:0;
+}
+
+.nav{
+    overflow:hidden;
+    width:100%;
+    margin: auto auto auto auto;
+   }
+
+.navbtn{
+    float: right;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+}
+
+.navlist{
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.bigland{
+    margin:auto;
+    justify-content: center;
+    align-items:center;
+    height:100vh;
+    display:flex;
+}
+.landContainer{
+    overflow-x:hidden;
+    overflow-y:hidden;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 20em;
+    grid-template-rows:12em 12em 12em;
+    gap: 1em;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+      }
+
+.options{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    font-size: 3rem;
+    background: white;
+    user-select: none;
+    -webkit-user-select: none; /* Safari fallback only */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 30px 20px;
+}
+
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 14em);
+    grid-template-rows: 5em 25em 7em 7em;
+    gap: 1em;
+    justify-content: center;
+}
+
+
+.topbox{
+    grid-column: span 2;
+    width:100%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    border-radius: 0.5em;
+    background: white;
+    user-select: none;
+    -webkit-user-select: none; /* Safari fallback only */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    font-family: 'Roboto', sans-serif;
+}
+
+.n{
+    display: none;
+}
+
+.todrink{
+    display: none;
+}
+
+.card{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    border-radius: 0.5em;
+    background: white;
+    user-select: none;
+    -webkit-user-select: none; /* Safari fallback only */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    font-family: 'Roboto', sans-serif;
+}
+
+.text{
+    grid-column: span 4;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 2.5rem;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    user-select: none;
+    align-items:center;
+}
+
+input{
+    text-align: center;
+    box-sizing: border-box;
+
+}
+
+.bigbox{
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(4, 14em);
+    grid-template-rows: 7em;
+    gap: 1em;
+    align-items: center;
+
+}
+
+.box{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    font-size: 3rem;
+    background: white;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.leaderboardbox{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    font-size: 3rem;
+    background: white;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+    /* display:flex */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+.checkered45 {
+  background-size: 50px 50px;
+  background-image: linear-gradient( 45deg, #000099 25%, transparent 25%, transparent),
+                    linear-gradient(-45deg, #000099 25%, transparent 25%, transparent),
+                    linear-gradient( 45deg, transparent 75%, #000099 75%),
+                    linear-gradient(-45deg, transparent 75%, #000099 75%)
+    /*https://codepen.io/lloeki/pen/Dvkqw*/
+}
+
+/*first 3 make the top corners show card numbers, red and black set a class for the card*/
+.card::before,
+.card::after {
+    position: absolute;
+    content: attr(data-value);
+    font-size: 2.5rem;
+}
+
+.card::before {
+    top: 0.5em;
+    left: 0.5em;
+}
+
+.card::after {
+    bottom: 0.5em;
+    right: 0.5em;
+    transform: rotate(180deg);
+}
+
+.card.red{
+    color:red;
+}
+
+.card.black{
+    color:black;
+}
+
+.howcontainer{
+    margin: auto;
+    display: block;
+    align-items: center;
+
+}
+
+.h1how, .h1leader{
+    font-size: 3rem;
+    margin: 20px auto;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+.lihow{
+    list-style-type: none;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+
+}
+
+.ulhow{
+    padding:30px;
+    margin:50px auto;
+    align-items: center;
+    text-align: center;
+    font-size: 1.7rem;
+    background-color: white;
+    width: 75%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+.outerbody{
+    margin:0%;
+    padding:0%;
+}
+
+table, td, th {
+  border: 2px solid black;
+}
+
+table{
+    margin: 20px auto 50px auto;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    table-layout: fixed;
+}
+
+th{
+    font-size: 2.5rem;
+}
+
+td{
+    font-size: 2.3rem;
+}
+
+@media screen and (max-width: 1020px) {
+
+    .container{
+       margin-top: 50%;
+    }
+
+    .h1how, .h1leader{
+        width: 50%;
+    }
+
+    th{
+        line-height: 1;
+        padding:.5em;
+    }
+
+    .remain{
+        font-size:3rem;
+    }
+
+    .drink{
+         font-size:3rem;
+    }
+
+    .box{
+        font-size:2rem;
+    }
+
+    .navbtn{
+       font-size: 2.2rem;
+       float: right;
+    }
+
+
+}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  How to
+{% endblock %}
+
+
+{% block main %}
+
+<div class="outerbody">
+    {% include 'navbar.html' %}
+</div>
+
+<div class="howcontainer">
+    <h1 class="h1how">How to play</h1>
+        <div>
+            <ul class="ulhow">
+                <li class="lihow">First you will be asked to pick either red or black for the first card.</li>
+                <li class="lihow">Then higher or lower than the first card.</li>
+                <li class="lihow">Next chose wether the third card is inbewtween or outside of the first and second cards.</li>
+                <li class="lihow">Lastly you will be asked to chose if the fourth card is red or black or (compared to the third card) higher or lower. From the four options simply pick one.</li>
+                <li class="lihow">If you make the incorrect choice, you will start again - adding a sip to your final forfeight. This is a drinking game after all. </li>
+                <li class="lihow">If at any point the card you draw has the same value as a card that is currently being questioned you will restart the round</li>
+                <li class="lihow">If you complete the game with no mistakes, you can nominate someone to finish their drink</li>
+                <li class="lihow">If you go through the entire pack, you must finish a whole drink.</li>
+            </ul>
+    </div>
+</div>
+
+{% endblock %}

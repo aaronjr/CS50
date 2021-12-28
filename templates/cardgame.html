@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Card game
+{% endblock %}
+
+{% block main %}
+
+<div class="outerbody">
+    {% include 'navbar.html' %}
+</div>
+
+    <div class="container">
+
+
+        <div class="topbox" id="remain" data-value="" name="remain"></div>
+        <div class="topbox" id="drink" data-value="" name="sips"></div>
+        <div class="card" id="card1" data-value=""></div>
+        <div class="card" id="card2" data-value=""></div>
+        <div class="card" id="card3" data-value=""></div>
+        <div class="card" id="card4" data-value=""></div>
+        <div class="text" id="text"></div>
+
+        <div class="bigbox">
+            <button class="box" id="box1" data-value=""></button>
+            <button class="box" id="box2" data-value=""></button>
+            <button class="box" id="box3" data-value=""><a href=""></a></button>
+            <button class="box" id="box4" data-value=""></button>
+            <form class="bigbox" method="post" action="/cardgame">
+                <input autocomplete="off" name="name" placeholder="Name" type="text" class="leaderboardbox" id="box5" maxlength="10">
+                <button class="leaderboardbox" id="box6" type="submit">Save</button>
+                <input class="n" id="n" data-value="" name="n">
+                <input class="todrink" id="todrink" data-value="" name="todrink">
+            </form>
+        </div>
+
+    </div>
+
+<script src="/static/cardgame.js"></script>
+{% endblock %}
