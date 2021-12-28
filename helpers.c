@@ -1,4 +1,4 @@
-#include "helpers.h"
+yes#include "helpers.h"
 #include <math.h>
 
 // Convert image to grayscale
@@ -43,27 +43,42 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             //create a cap
             if (red > 255)
             {
-                image[i][j].rgbtRed = 255;}
+                image[i][j].rgbtRed = 255;
+            }
             else if (red < 0)
             {
-                image[i][j].rgbtRed = 0;}
-            else{image[i][j].rgbtRed = red;}
+                image[i][j].rgbtRed = 0;
+            }
+            else
+            {
+                image[i][j].rgbtRed = red;
+            }
             
             if (green > 255)
             {
-                image[i][j].rgbtGreen = 255;}
+                image[i][j].rgbtGreen = 255;
+            }
             else if (red < 0)
             {
-                image[i][j].rgbtGreen = 0;}
-            else{image[i][j].rgbtGreen = green;}
+                image[i][j].rgbtGreen = 0;
+            }
+            else
+            {
+                image[i][j].rgbtGreen = green;
+            }
         
             if (blue > 255)
             {
-                image[i][j].rgbtBlue = 255;}
+                image[i][j].rgbtBlue = 255;
+            }
             else if (red < 0)
             {
-                image[i][j].rgbtBlue = 0;}
-            else{image[i][j].rgbtBlue = blue;}
+                image[i][j].rgbtBlue = 0;
+            }
+            else
+            {
+                image[i][j].rgbtBlue = blue;
+            }
         }
     }
     return;
@@ -74,16 +89,16 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     //loop through rows
     for (int i = 0; i < height; i++)
-     {
-         //loop through columns
+    {
+        //loop through columns
         for (int j = 0; j < width / 2; j++)
         {
             //use place holder and switch around
             RGBTRIPLE buffer = image[i][j];
-            image[i][j] = image[i][width-1-j];
-            image[i][width-1-j]=buffer;
+            image[i][j] = image[i][width - 1 - j];
+            image[i][width - 1 - j] = buffer;
         }
-     }
+    }
     return;
 }
 
@@ -94,7 +109,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     RGBTRIPLE temp[height][width];
     for (int i = 0; i < height; i++)
     {
-        for(int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         {
             //initialise variables
             temp[i][j] = image[i][j];
@@ -106,19 +121,18 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // check to make sure i + j of arrayare valid
             for (int h = -1; h < 2; h++)
             {
-                for(int w = -1; w < 2; w++)
+                for (int w = -1; w < 2; w++)
                 {
                     if (i + h < 0 || i + h > (height - 1))
                     {
-                    continue;
-                        
+                        continue;
                     }
                     if (j + w < 0 || j + w > (width - 1))
                     {
-                    continue;
-                        
+                        continue;
                     }
-                    else{
+                    else
+                    {
                         counter++;
                         averageBlue += image[i + h][j + w].rgbtBlue;
                         averageGreen += image[i + h][j + w].rgbtGreen;
