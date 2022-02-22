@@ -1,0 +1,144 @@
+body{
+    font-family: arial,sans-serif;
+    margin: auto;
+    padding: 10px;
+}
+.nav{
+    padding:10px 10px;
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+.nav>a{
+    padding:10px;
+    text-decoration: none;
+    font-size:14px;
+}
+
+.nav>a:hover{
+    text-decoration: underline;
+}
+
+.nav>a:visited{
+    color:black;
+}
+
+#img{
+   display:flex;
+   margin:auto;
+   align-items: center;
+   justify-content: center;
+   margin-top: 150px;
+}
+#search{
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    margin-top: 30px;
+    border-radius: 5rem;
+    border: 0.5px solid rgb(151, 149, 149);
+    width:600px;
+}
+
+#inputbox{
+    width:500px;
+    height:40px;
+    padding: 0px 15px;
+    font-size:16px;
+    background-color: transparent;
+    border:none;
+}
+
+#inputbox:focus{
+    outline:none;
+}
+
+#search:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+#glass{
+    width:25px;
+}
+
+#searchbtns{
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    margin: 10px;
+}
+.searchbutton{
+    font-size: 14px;
+    padding: 0 16px;
+    margin:0 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    min-width:54px;
+    line-height:27px;
+    border:none;
+    margin-top:18px;
+}
+
+.searchbutton:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    border:1px solid rgba(33,33,33,.2);
+    cursor: pointer;
+}
+
+img{
+    width:250px;
+}
+
+h1{
+    color:#d93025;
+    font-size: 20px;
+    margin: 25px 35px;
+    font-weight:normal;
+}
+
+#headerAS{
+    border-bottom: 0.5px solid rgba(33,33,33,.2);
+}
+
+#ASform{
+    margin:25px 300px 0 20px;
+    display: grid;
+    grid-template-columns: auto 600px auto;
+    grid-template-rows: repeat(6,40px);
+    padding:10px;
+    font-size:13px;
+    font-weight:100;
+}
+
+#ASform > label{
+    padding:5px;
+}
+
+#ASform > input{
+    padding:0 5px;
+    height:70%;
+    border: 1px solid rgba(33,33,33,.2);
+    font-size: 13px;
+}
+
+.end{
+    font-size:12px;
+    font-weight:100;
+    color:#555;
+}
+#ASsearchDIV{
+    display:flexbox;
+    justify-content:flex-end;
+    grid-row-end:7;
+    grid-column-end: 3;
+}
+
+#ASsearch{
+    background-color: #4d90fe;
+    color: white;
+    width:20%;
+    height:30px;
+    float:right;
+}
