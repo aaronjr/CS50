@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width initial-scale=1">
+    </head>
+    <body>
+        <div class="nav">
+            <a href="image.html">Image search</a>
+            <a href="index.html">Google home</a>
+        </div>
+       <div id="headerAS">
+           <h1>Advanced search</h1>
+       </div>
+       <div id="ASgrid">
+           <form action="https://google.com/search" id="ASform">
+               <label style="font-size:15px">Find pages with...</label>
+               <label></label>
+               <label style="font-size:15px; color:#555;">To do this in the search box.</label>
+               <label for="1">all these words:</label>
+               <input type="text" name="as_q">
+               <label for="1" class="end">Type the important words:  tri-colour rat terrier</label>
+               <label for="2">this exact word or phrase:</label>
+               <input type="text" name="as_epq">
+               <label for="2" class="end">Put exact words in quotes:  "rat terrier"</label>
+               <label for="3">any of these words:</label>
+               <input type="text" name="as_oq">
+               <label for="3" class="end">Type OR between all the words you want:  miniature OR standard</label>
+               <label for="4">none of these words:</label>
+               <input type="text" name="as_eq">
+               <label for="4" class="end">Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</label>
+               <div id="ASsearchDIV"><input type="submit" value="Advanced search" id="ASsearch"></div>
+           </form>
+       </div>
+    </body>
+</html>
