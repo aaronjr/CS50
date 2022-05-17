@@ -1,0 +1,107 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+        {% if auction != None %}
+            <div class="listing_item">
+                    <img class="listimage formwidth" src="{{auction.listauction.image}}" >
+                <div class="itemtext">
+                    <h3>{{auction.listauction.item.capitalize}}</h3>
+                    {% if auction.bid.price == None %}
+                        <p>Starting price: £{{ auction.listauction.price }}</p>
+                    {% else %}
+                        <p>Current bid: £{{ auction.bid.price }}</p>
+                    {% endif %}
+                    <p>{{auction.listauction.description.capitalize}}</p>
+                    <p>Category: {{auction.listauction.category}}</p>
+                </div>
+            
+            {% if user.is_authenticated %}
+            <div class="bottomsection"> 
+            <div class="watchlist">
+                <form action="{% url 'watchlist' %}" method="post">
+                    {% csrf_token %}
+                        {% if wlist == "N" and user != auction.listauction.listuser %}
+                            <input value="{{auction.listauction.id}}" type="hidden" name="id">
+                            <button class="btn btn-primary formwidth" type='submit'>Add to watchlist</button>
+                        {% elif user == auction.listauction.listuser %}
+                        {% else %}
+                            <input value="{{auction.listauction.id}}" type="hidden" name="id">
+                            <button class="btn btn-primary formwidth" type='submit'>Remove from watchlist</button>
+                        {% endif %}
+                </form>
+            
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+                {% if user == auction.listauction.listuser and auction.status == False %}
+                    <form action="{% url 'makelive'%}" method="POST">
+                        {% csrf_token %}
+                        <input value="{{auction.listauction.id}}" type="hidden" name="action">
+                        <button class="btn btn-primary formwidth" type='submit'>Make listing live</button>
+                    </form>
+                {% elif user == auction.listauction.listuser and auction.status == True %}
+                    <form action="{% url 'close' %}" method="POST">
+                        {% csrf_token %}
+                        <input value="{{auction.listauction.id}}" type="hidden" name="action">
+                        <button class="btn btn-primary formwidth" type='submit'>Close listing</button>
+                    </form>
+                {% elif user != auction.listauction.listuser and auction.status == True %}
+                    <form action="{% url 'bid' auction.listauction.id %}" method="POST">
+                        <hr>
+                        {% csrf_token %}
+                        {{ bidform }}
+                        <button class="btn btn-primary formwidth" type='submit'>Submit bid</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <div class="listing_item">
+                <img class="listimage formwidth" src="{{listing.image}}" >
+                <div class="itemtext">
+                    <h3>{{listing.item.capitalize}}</h3>
+                    <p>Starting price: £{{listing.price }}</p>
+                    <p>{{listing.description.capitalize}}</p>
+                    <p>Category: {{listing.category}}</p>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+                {% if user == listing.listuser %}
+                    <form action="{% url 'makelive' %}" method="POST">
+                        {% csrf_token %}
+                            <input value="{{listing.id}}" type="hidden" name="action">
+                            <button class="btn btn-primary formwidth" type='submit'>Make listing live</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+
+            {% if listing.winner == user %}
+                <h3> You won this listing - congratulations. </h3>
+            {% elif listing.listuser == user and listing.winner != None %}
+                <h3> This item was won by {{listing.winner}} </h3>
+            {% endif %}
+
+        {% endif %}
+        
+       
+            {% if user.is_authenticated %}
+            <div class="commentdiv">
+            <form class="commentform" action="{% url 'comment' listing.id  %}" method="POST">
+                {% csrf_token %}
+                {{ commentform }}
+                    <button class="btn btn-primary formwidth"  type='submit'>Submit comment</button>
+            </form>
+            {% for comment in comments %}
+                <h5 class="usercomment formwidth">{{ comment.commentuser}}:</h5>
+                <h5 class="commenttext formwidth">{{ comment.comment }}</h5>
+            {% endfor %}
+            </div>
+            {% endif %}
+        
+
+{% endblock %}
