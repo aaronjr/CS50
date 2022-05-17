@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h2>My listings</h2>
+
+<div class="grid"> 
+        {% for listing in listings %}
+        <div class="item">
+            <a href="{% url 'listing' listing.id %}" >
+                <div class="divimage">
+                    <p></p>
+                    <img class="imgactive" src="{{listing.image}}">
+                </div>
+                <div class="itemtext">
+                    <h3>{{listing.item.capitalize}}</h3>
+                    <p>{{listing.description.capitalize}}</p>
+                    <a href="{% url 'categorylistitem' listing.category %}"><p>Category: {{listing.category}}</p></a>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+</div> 
+
+{% endblock %}
+

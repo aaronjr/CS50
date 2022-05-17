@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active listings</h2>
+    <div class="grid"> 
+        {% for auction in auctions %}
+            <div class="item">
+                <a href="{% url 'listing' auction.listauction.id %}">
+                    <div class="divimage">
+                        <p></p>
+                        <img class="imgactive" src="{{auction.listauction.image}}" >
+                    </div>
+                    <div class="itemtext">
+                        <h3>{{auction.listauction.item.capitalize}}</h3>
+                            {% if auction.bid.price == None %}
+                                <p>Starting price: £{{ auction.listauction.price }}</p>
+                            {% else %}
+                                <p>Current bid: £{{ auction.bid.price }}</p>
+                            {% endif %}
+                            <p>{{auction.listauction.description.capitalize}}</p>
+                            <a href="{% url 'categorylistitem' auction.listauction.category %}"><p>Category: {{auction.listauction.category}} </p></a>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>  
+{% endblock %}
