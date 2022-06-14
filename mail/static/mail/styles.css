@@ -1,0 +1,16 @@
+textarea {
+    min-height: 400px;
+}
+
+.eachemail{
+    background-color: rgb(224, 223, 223);
+    margin: 5px auto;
+    padding: 20px 10px 10px;
+    border: solid black 0.5px;
+}
+
+.btn-primary{
+    margin:5px;
+    width: 100px;
+    height:40px;
+}
