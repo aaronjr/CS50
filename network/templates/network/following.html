@@ -1,0 +1,75 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+    <h1 style="margin:10px"> People you follow </h1>
+    
+    <div class="container">
+        {% for f in follow %}
+        {% if forloop.first %}<div class="row">{% endif %}
+            <div class="col-6 col-md-4">
+                <a href="{% url 'userprofile' f.username %}">
+                    <div class="following">
+                        <img src=" {{ f.image }}" class="followprofilepicture"> 
+                        <div style="margin:auto;"> 
+                            <p class="followlink">{{f.username}}</p>
+                            <p class="datejoined"> Joined: {{f.date_joined|date}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+        {% if forloop.last %}</div>{% endif %}
+        {% endfor %}
+    </div>
+    <h2 style="margin:10px">Posts of people you follow</h2>
+        {% for post in page_obj %}
+        <div class="post">
+            <div style="margin:auto;">
+                <a href="{% url 'userprofile' post.user %}"><img src="{{ post.user.image }}" class="profilepicture"></a> 
+            </div>
+            <div>
+                <p class="thevalue" style="display:none" data-value="{{ post.id }}">{{ post.id }}</p>
+                <a href="{% url 'userprofile' post.user %}" ><p class="userlink" >{{ post.user }}</p></a>
+                <div id="content">
+                    <p class="content">{{ post.content }}</p>
+                </div>
+                <p {% if post.id in likes %}
+                        {class="likecount"><i id="heart" class='fa fa-heart red-color'}
+                    {% else %}
+                        {class="likecount"><i id="heart" class='fa fa-heart-o' aria-hidden="true"}
+                    {% endif %}
+                ></i> <span class="counting"> {{ post.count }} </span> </p>
+                <p class="postdate">{{ post.date }}</p>
+            </div>
+        </div>
+        {% endfor %} 
+        <div class="pagination">
+            <span class="pagination">
+                {% if page_obj.has_previous %}
+                    <a class="page-link" href="?page=1">&laquo; 1</a>
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="page-link">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+{% else %}
+    {% if messages %}
+            <ul class="messages" style="padding:0px; margin-top: 10px;">
+                {% for message in messages %}
+                    <p class="alert alert-danger">{{ message }}</p>
+                {% endfor %}
+            </ul>
+    {% endif %}
+    <h1> Please log in to see posts</h1>
+    <a href="{% url 'login' %}"><h2>Log in</h2></a>
+{% endif %}     
+{% endblock %}

@@ -1,0 +1,159 @@
+.main{
+    justify-content: center;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/* main page */
+.newpost{
+    padding: 10px 0px;
+    margin: 10px;
+    border-radius: .5px;
+}
+
+.btn{
+    margin: 5px auto;
+    background-color: rgb(29,155,240);
+}
+.post{
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 13% auto;
+    columns: 3;
+}
+
+.post:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+/* user profile */
+
+b{
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    vertical-align: center;
+}
+
+.userdetails{
+    margin: auto 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.count{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.count > h3{
+    padding: 5px;
+}
+
+.userdetails > h2{
+    margin: auto;
+}
+
+.followcount{
+    font-size: larger;
+    font-weight: 400;
+}
+
+.followform{
+    display:flex;
+}
+/* following page */
+
+.following{
+    border: 3px solid #ced4da;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns:auto auto;
+    columns: 2;
+}
+
+.followlink{
+    margin:auto;
+    font-size: xx-large;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.datejoined{
+    font-size:smaller;
+    font-weight: 300;
+}
+
+/* profile pics  */
+.profilepicture{
+    justify-content: center;
+    max-width:125px;
+    margin: auto;
+    border: 3px solid rgb(29,155,240);
+    border-radius: 50%;
+}
+
+.followprofilepicture{
+    justify-content: center;
+    max-width:150px;
+    margin: auto;
+    border: 3px solid rgb(29,155,240);
+    border-radius: 50%;
+}
+
+/* post attributes */
+.likecount{
+    font-size: medium;
+    font-weight:200;
+    margin-bottom: 0px;
+}
+
+.postdate{
+    font-size:smaller;
+    color: grey;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+.content{
+    font-size:large;
+}
+
+.userlink{
+    font-size: larger;
+    font-weight: 700;
+}
+
+/* like heart */
+
+.red-color {
+    color:red;
+}
+
+.white-color{
+    color:white;
+    border: 0.5px solid black;
+}
+
+.pagination{
+    justify-self: center;
+    margin: auto;
+    margin-bottom:30px;
+}
+
+.container-lg{
+    margin:50px auto;
+}
