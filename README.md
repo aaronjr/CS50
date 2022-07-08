@@ -8,5 +8,6 @@
 
 #### The two projects ..... are in the file "project" and "pset9" then "finance".
 #### The project in "project" is a card game built with HTML, CSS, JS, PYTHON, FLASK & SQLite3. In the terminal of the IDE, run "flask run" to launch the website. 
-#### The project in "finance" is a website which allows you to buy and sell stocks, keeping track of your portfolio. Before running "flask run" run - export API_KEY=pk_1ce4a1da65f44c49aba989150ed4c67a
+
+The project in "finance" is a website which allows you to buy and sell stocks, keeping track of your portfolio. Before running "flask run" run - export API_KEY=pk_1ce4a1da65f44c49aba989150ed4c67a
  
