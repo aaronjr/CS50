@@ -1,5 +1,5 @@
 # Drinking with Aaron.
-## Video Demo:  <URL https://www.youtube.com/watch?v=3J92HELXkDU >
+## Video Demo: https://www.youtube.com/watch?v=3J92HELXkDU
 ### Description:
 
 I have chosen to make the world a better place by making a drinking card game. 
