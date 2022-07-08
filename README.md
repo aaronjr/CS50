@@ -22,7 +22,7 @@ This website allows users to send emails to other users registered on the site. 
 This is a social media website emulating Twitter. Here users can log in, create posts "Tweets", users can follow each other, like each other's posts. By default the homepage loads all users posts, but clicking the following tab, will load just the users they are following. 
 
 
-### CS50's Introduction to Computer Science - https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home
+### CS50's Introduction to Computer Science - [https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home](https://cs50.harvard.edu/x/2021/)
 
 The branches beginning with CS50 are from the first course, these projects were made in an online IDE. The link for the IDE is https://ide.cs50.io/5bf64dc13b7b4921a953f5da530ba6c7 - I will need to approve your Github username to see the projects. 
 
