@@ -33,6 +33,11 @@ The two projects ..... are in the files "project" and "pset9" -> "finance".
 #### Project
 The project in "project" is a card game built with HTML, CSS, JS, PYTHON, FLASK & SQLite3. In the terminal of the IDE, run "flask run" to launch the website. 
 
+This is a cardgame - the aim of the game is to guess correctly four times in a row, each card offering different options. The first card offers red or black,
+the second card offers higher or lower than the last card, the third card offers inside or outside the two cards on the table witht the fourth card offering, red or black or 
+(compared to the last card) higher or lower. There is a full explanation in the how to play section. After the game has been completed, if you won you can post your score 
+to the leaderboard. 
+
 #### Finance
 The project in "finance" is a website which allows you to buy and sell stocks, keeping track of your portfolio. 
 Before running "flask run" run - export API_KEY=pk_1ce4a1da65f44c49aba989150ed4c67a
