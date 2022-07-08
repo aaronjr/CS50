@@ -6,7 +6,7 @@
 
 The brances beginng with CS50 are from the first course, these projects were made in an online IDE. The link for the IDE is https://ide.cs50.io/5bf64dc13b7b4921a953f5da530ba6c7 - i will need to approve your Github username to see the projects. 
 
-The two projects ..... are in the file "project" and "pset9" -> "finance".
+The two projects ..... are in the files "project" and "pset9" -> "finance".
 
 ##### "Project'
 The project in "project" is a card game built with HTML, CSS, JS, PYTHON, FLASK & SQLite3. In the terminal of the IDE, run "flask run" to launch the website. 
