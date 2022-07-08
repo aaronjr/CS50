@@ -6,7 +6,7 @@
 
 The brances beginng with CS50 are from the first course, these projects were made in an online IDE. The link for the IDE is https://ide.cs50.io/5bf64dc13b7b4921a953f5da530ba6c7 - i will need to approve your Github username to see the projects. 
 
-Throughout the problem sets you will find small programms written in # C and # Python. 
+Throughout the problem sets you will find small programms written in C and Python. 
 
 The two projects ..... are in the files "project" and "pset9" -> "finance".
 
