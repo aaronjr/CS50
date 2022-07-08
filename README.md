@@ -5,3 +5,5 @@
 ### CS50 Introduction to computer science
 
 #### The brances beginng with CS50 are from the first course, these projects were made in an online IDE. The link for the IDE is https://ide.cs50.io/5bf64dc13b7b4921a953f5da530ba6c7 - i will need to approve your Github username to see the projects. 
+
+#### Most of the projects 
